@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact — BeeEye.ca</title>
+  <meta name="description" content="Get a free audit from BeeEye.ca. Web design and digital solutions for Uzbekistan businesses. Available in Uzbek, Russian, and English.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --black: #0a0a0a; --white: #ffffff; --off: #f7f7f5;
+      --amber: #f5a623; --amber-d: #e0941a;
+      --muted: #6b7280; --border: #e5e5e5;
+      --green-bg: #ecfdf5; --green-text: #065f46; --green-border: #a7f3d0;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', -apple-system, sans-serif; background: var(--white); color: var(--black); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+
+    /* ─── Lang bar ─── */
+    .lang-bar { background: var(--black); padding: 0.45rem 2rem; display: flex; justify-content: space-between; align-items: center; }
+    .lang-bar-left { font-size: 12px; color: #555; letter-spacing: 0.04em; }
+    .lang-bar-left span { color: var(--amber); }
+    .lang-switcher { display: flex; gap: 0.25rem; }
+    .lang-btn { background: transparent; border: 1px solid #333; color: #666; padding: 0.2rem 0.6rem; border-radius: 3px; font-size: 11px; font-weight: 600; letter-spacing: 0.06em; cursor: pointer; font-family: inherit; transition: all 0.15s; }
+    .lang-btn:hover { border-color: var(--amber); color: var(--amber); }
+    .lang-btn.active { background: var(--amber); border-color: var(--amber); color: var(--black); }
+
+    /* ─── Nav ─── */
+    nav { position: sticky; top: 0; z-index: 999; background: var(--white); border-bottom: 1px solid var(--border); }
+    .nav-inner { max-width: 1200px; margin: 0 auto; padding: 0 2rem; height: 64px; display: flex; align-items: center; justify-content: space-between; }
+    .nav-logo { display: flex; flex-direction: column; text-decoration: none; }
+    .nav-logo-name { font-size: 18px; font-weight: 800; color: var(--black); letter-spacing: -0.03em; line-height: 1; }
+    .nav-logo-name em { color: var(--amber); font-style: normal; }
+    .nav-logo-tagline { font-size: 9px; color: var(--muted); letter-spacing: 0.12em; text-transform: uppercase; margin-top: 2px; }
+    .nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
+    .nav-links a { text-decoration: none; font-size: 13px; font-weight: 500; color: var(--muted); transition: color 0.15s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--black); font-weight: 600; }
+    .btn-nav { background: var(--black); color: var(--white) !important; padding: 0.55rem 1.25rem; border-radius: 6px; font-size: 13px; font-weight: 600 !important; text-decoration: none; transition: background 0.15s; }
+    .btn-nav:hover { background: #222 !important; }
+    .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; }
+    .hamburger span { width: 22px; height: 2px; background: var(--black); display: block; }
+    .mobile-nav { display: none; background: var(--white); border-bottom: 1px solid var(--border); padding: 1rem 2rem 1.5rem; }
+    .mobile-nav.open { display: block; }
+    .mobile-nav a { display: block; padding: 0.6rem 0; font-size: 15px; font-weight: 500; color: var(--black); text-decoration: none; border-bottom: 1px solid var(--border); }
+    .mobile-nav a:last-child { border-bottom: none; }
+    .mobile-nav .btn-nav { display: block; text-align: center; margin-top: 1rem; background: var(--black); color: var(--white) !important; border-radius: 6px; font-weight: 600 !important; }
+
+    /* ─── Page header ─── */
+    .page-header { padding: 4rem 2rem 3.5rem; border-bottom: 1px solid var(--border); }
+    .page-header-inner { max-width: 1200px; margin: 0 auto; }
+    .breadcrumb { font-size: 12px; color: var(--muted); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem; }
+    .breadcrumb a { color: var(--muted); text-decoration: none; }
+    .breadcrumb span { color: var(--border); }
+    .page-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 1rem; }
+    .page-header h1 { font-size: clamp(32px, 5vw, 52px); font-weight: 800; letter-spacing: -0.03em; line-height: 1.1; max-width: 720px; margin-bottom: 1rem; }
+    .page-header p { font-size: 17px; color: var(--muted); max-width: 560px; line-height: 1.75; }
+
+    /* ─── Layout ─── */
+    .divider { height: 1px; background: var(--border); }
+    .section { padding: 5rem 2rem; }
+    .section-inner { max-width: 1200px; margin: 0 auto; }
+
+    /* ─── Contact grid ─── */
+    .contact-grid { display: grid; grid-template-columns: 1fr; gap: 3.5rem; align-items: start; }
+
+    /* ─── Form card ─── */
+    .form-card { border: 1px solid var(--border); border-radius: 10px; padding: 2.5rem; }
+    .form-card-header { margin-bottom: 2rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border); }
+    .form-card-eyebrow { font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--amber-d); margin-bottom: 0.6rem; }
+    .form-card-title { font-size: 22px; font-weight: 800; letter-spacing: -0.025em; line-height: 1.2; margin-bottom: 0.4rem; }
+    .form-card-sub { font-size: 14px; color: var(--muted); line-height: 1.65; }
+
+    .field-row { display: grid; grid-template-columns: 1fr; gap: 1.25rem; margin-bottom: 1.25rem; }
+    .field { display: flex; flex-direction: column; gap: 0.35rem; }
+    .field label { font-size: 12px; font-weight: 600; color: var(--black); letter-spacing: 0.02em; }
+    .field input, .field select, .field textarea {
+      padding: 0.7rem 0.9rem;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      font-size: 14px;
+      font-family: inherit;
+      color: var(--black);
+      background: var(--white);
+      transition: border-color 0.15s;
+      outline: none;
+      width: 100%;
+    }
+    .field input:focus, .field select:focus, .field textarea:focus { border-color: var(--amber); }
+    .field textarea { min-height: 110px; resize: vertical; }
+    .field select {
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none'%3E%3Cpath d='M6 9l6 6 6-6' stroke='%236b7280' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 0.75rem center;
+      padding-right: 2.25rem;
+    }
+    .form-footer { margin-top: 1.75rem; display: flex; flex-direction: column; gap: 0.75rem; align-items: flex-start; }
+    .btn-submit {
+      background: var(--amber); color: var(--black); border: none;
+      padding: 0.85rem 2rem; border-radius: 6px; font-size: 14px; font-weight: 700;
+      cursor: pointer; font-family: inherit; transition: background 0.15s; letter-spacing: 0.01em;
+    }
+    .btn-submit:hover { background: var(--amber-d); }
+    .form-note { font-size: 12px; color: var(--muted); line-height: 1.6; }
+
+    .success-msg {
+      display: none;
+      background: var(--green-bg);
+      border: 1px solid var(--green-border);
+      border-radius: 8px;
+      padding: 2rem;
+      text-align: center;
+    }
+    .success-msg h3 { font-size: 18px; font-weight: 800; color: var(--green-text); margin-bottom: 0.5rem; letter-spacing: -0.02em; }
+    .success-msg p { font-size: 14px; color: #047857; line-height: 1.65; }
+
+    /* ─── Sidebar ─── */
+    .sidebar { display: flex; flex-direction: column; gap: 1.75rem; }
+    .sidebar-header { margin-bottom: 0.25rem; }
+    .sidebar-eyebrow { font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.6rem; }
+    .sidebar-title { font-size: 18px; font-weight: 800; letter-spacing: -0.025em; margin-bottom: 0.4rem; }
+    .sidebar-sub { font-size: 14px; color: var(--muted); line-height: 1.65; }
+
+    .contact-cards { display: flex; flex-direction: column; gap: 0; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
+    .contact-card { display: flex; align-items: center; gap: 1rem; padding: 1rem 1.25rem; border-bottom: 1px solid var(--border); text-decoration: none; color: inherit; transition: background 0.15s; }
+    .contact-card:last-child { border-bottom: none; }
+    .contact-card:hover { background: var(--off); }
+    .cc-icon { width: 36px; height: 36px; background: var(--off); border: 1px solid var(--border); border-radius: 6px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .cc-label { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.15rem; }
+    .cc-value { font-size: 13px; font-weight: 600; color: var(--black); }
+
+    .hours-box { background: var(--black); border-radius: 8px; padding: 1.5rem; }
+    .hours-eyebrow { font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--amber); margin-bottom: 1rem; }
+    .hours-row { display: flex; justify-content: space-between; align-items: center; padding: 0.5rem 0; border-bottom: 1px solid #1a1a1a; font-size: 13px; }
+    .hours-row:last-child { border-bottom: none; }
+    .hours-day { color: #555; }
+    .hours-time { color: var(--white); font-weight: 600; }
+
+    .lang-box { border: 1px solid var(--border); border-radius: 8px; padding: 1.5rem; background: var(--off); }
+    .lang-box-eyebrow { font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 1rem; }
+    .lang-items { display: flex; flex-direction: column; gap: 0.6rem; }
+    .lang-item { display: flex; align-items: center; gap: 0.75rem; font-size: 14px; font-weight: 600; color: var(--black); }
+    .lang-item-flag { font-size: 18px; line-height: 1; }
+
+    /* ─── CTA band ─── */
+    .cta-band { background: var(--black); padding: 5rem 2rem; }
+    .cta-band-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr; gap: 2.5rem; align-items: center; }
+    .cta-band h2 { font-size: clamp(26px, 3.5vw, 40px); font-weight: 800; letter-spacing: -0.025em; line-height: 1.15; color: var(--white); }
+    .cta-band p { font-size: 15px; color: #666; line-height: 1.75; margin-top: 0.75rem; }
+    .btn-amber { background: var(--amber); color: var(--black); padding: 0.85rem 1.75rem; border-radius: 6px; font-size: 14px; font-weight: 700; text-decoration: none; transition: background 0.15s; display: inline-block; white-space: nowrap; }
+    .btn-amber:hover { background: var(--amber-d); }
+
+    /* ─── Footer ─── */
+    footer { background: var(--black); border-top: 1px solid #1a1a1a; padding: 2rem; text-align: center; }
+    .footer-bottom { max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 0.4rem; }
+    .footer-bottom p { font-size: 12px; color: #333; }
+    .footer-bottom a { color: #444; text-decoration: none; }
+    .footer-bottom a:hover { color: var(--amber); }
+
+    /* ─── Responsive ─── */
+    @media (max-width: 767px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .section { padding: 3.5rem 1.5rem; }
+      .page-header { padding: 3rem 1.5rem 2.5rem; }
+      .lang-bar { padding: 0.45rem 1.5rem; }
+      .form-card { padding: 1.75rem; }
+    }
+    @media (min-width: 640px) {
+      .field-row { grid-template-columns: 1fr 1fr; }
+    }
+    @media (min-width: 1024px) {
+      .contact-grid { grid-template-columns: 1fr 380px; }
+      .cta-band-inner { grid-template-columns: 1fr auto; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="lang-bar">
+  <span class="lang-bar-left"><span data-i18n="lang_tagline">🍁 Canadian quality · Uzbekistan market</span></span>
+  <div class="lang-switcher">
+    <button class="lang-btn active" onclick="setLang('en')" id="btn-en">EN</button>
+    <button class="lang-btn" onclick="setLang('ru')" id="btn-ru">RU</button>
+    <button class="lang-btn" onclick="setLang('uz')" id="btn-uz">UZ</button>
+  </div>
+</div>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <span class="nav-logo-name">Bee<em>Eye</em>.ca</span>
+      <span class="nav-logo-tagline" data-i18n="nav_tagline">Intelligent Systems</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="services.html" data-i18n="nav_services">Our Services</a></li>
+      <li><a href="index.html#how" data-i18n="nav_how">How We Work</a></li>
+      <li><a href="portfolio.html" data-i18n="nav_portfolio">Results</a></li>
+      <li><a href="contact.html" class="active" data-i18n="nav_contact_lnk">Contact</a></li>
+      <li><a href="contact.html" class="btn-nav" data-i18n="nav_cta">Book an Audit</a></li>
+    </ul>
+    <button class="hamburger" onclick="toggleMobile()"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mobile-nav" id="mobile-nav">
+  <a href="services.html" onclick="toggleMobile()" data-i18n="nav_services">Our Services</a>
+  <a href="index.html#how" onclick="toggleMobile()" data-i18n="nav_how">How We Work</a>
+  <a href="portfolio.html" onclick="toggleMobile()" data-i18n="nav_portfolio">Results</a>
+  <a href="contact.html" class="active" onclick="toggleMobile()" data-i18n="nav_contact_lnk">Contact</a>
+  <a href="contact.html" class="btn-nav" data-i18n="nav_cta">Book an Audit</a>
+</div>
+
+<div class="page-header">
+  <div class="page-header-inner">
+    <div class="breadcrumb">
+      <a href="index.html" data-i18n="nav_home">Home</a>
+      <span>/</span>
+      <span data-i18n="page_bc">Contact</span>
+    </div>
+    <div class="page-eyebrow" data-i18n="page_eyebrow">06 / Get in Touch</div>
+    <h1 data-i18n="page_h1">Let's build something for the Uzbekistan market</h1>
+    <p data-i18n="page_sub">Tell us about your project. We respond within 24 hours in Uzbek, Russian, or English — no obligation, no sales pressure.</p>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<section class="section">
+  <div class="section-inner">
+    <div class="contact-grid">
+
+      <!-- Form -->
+      <div>
+        <div class="form-card">
+          <div class="form-card-header">
+            <div class="form-card-eyebrow" data-i18n="form_eyebrow">Free Consultation</div>
+            <div class="form-card-title" data-i18n="form_title">Get a free project audit</div>
+            <p class="form-card-sub" data-i18n="form_sub">Fill in the details below. We'll review your situation and come back with honest recommendations — even if that means you don't need us.</p>
+          </div>
+
+          <form id="contact-form" onsubmit="handleSubmit(event)">
+            <div class="field-row">
+              <div class="field">
+                <label for="f-name" data-i18n="field_name">Your Name *</label>
+                <input type="text" id="f-name" name="name" required placeholder="Aziz Nazarov">
+              </div>
+              <div class="field">
+                <label for="f-company" data-i18n="field_company">Company / Business</label>
+                <input type="text" id="f-company" name="company" placeholder="My Business LLC">
+              </div>
+            </div>
+            <div class="field-row">
+              <div class="field">
+                <label for="f-email" data-i18n="field_email">Email Address *</label>
+                <input type="email" id="f-email" name="email" required placeholder="aziz@company.uz">
+              </div>
+              <div class="field">
+                <label for="f-phone" data-i18n="field_phone">Phone / Telegram</label>
+                <input type="tel" id="f-phone" name="phone" placeholder="+998 90 123 4567">
+              </div>
+            </div>
+            <div class="field-row">
+              <div class="field">
+                <label for="f-service" data-i18n="field_service">Service Needed *</label>
+                <select id="f-service" name="service" required>
+                  <option value="" data-i18n="sel_default">— Select a service —</option>
+                  <option value="web" data-i18n="opt_web">Website Design &amp; Development</option>
+                  <option value="ecom" data-i18n="opt_ecom">E-Commerce Store</option>
+                  <option value="seo" data-i18n="opt_seo">SEO &amp; Digital Marketing</option>
+                  <option value="ai" data-i18n="opt_ai">AI Integration / Chatbot</option>
+                  <option value="full" data-i18n="opt_full">Full Digital Package</option>
+                  <option value="other" data-i18n="opt_other">Other / Not sure yet</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="f-budget" data-i18n="field_budget">Budget Range</label>
+                <select id="f-budget" name="budget">
+                  <option value="" data-i18n="sel_default">— Select —</option>
+                  <option value="u500" data-i18n="bud1">Under $500</option>
+                  <option value="500-1k" data-i18n="bud2">$500 – $1,000</option>
+                  <option value="1k-2.5k" data-i18n="bud3">$1,000 – $2,500</option>
+                  <option value="2.5k-5k" data-i18n="bud4">$2,500 – $5,000</option>
+                  <option value="5k+" data-i18n="bud5">$5,000+</option>
+                </select>
+              </div>
+            </div>
+            <div class="field" style="margin-bottom:1.25rem;">
+              <label for="f-msg" data-i18n="field_msg">About Your Project *</label>
+              <textarea id="f-msg" name="message" required placeholder="..."></textarea>
+            </div>
+            <div class="field" style="margin-bottom:1.5rem;">
+              <label for="f-lang" data-i18n="field_lang">Preferred language for replies</label>
+              <select id="f-lang" name="lang_pref">
+                <option value="en">English</option>
+                <option value="ru">Русский</option>
+                <option value="uz">O'zbekcha</option>
+              </select>
+            </div>
+            <div class="form-footer">
+              <button type="submit" class="btn-submit" data-i18n="btn_submit">Send message →</button>
+              <p class="form-note" data-i18n="form_note">We respond within 24 hours. Your information is kept private.</p>
+            </div>
+          </form>
+
+          <div class="success-msg" id="success-msg">
+            <h3 data-i18n="ok_title">Message received.</h3>
+            <p data-i18n="ok_sub">Thank you for reaching out. We'll contact you within 24 hours to discuss your project in detail.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <div class="sidebar">
+
+        <div class="sidebar-header">
+          <div class="sidebar-eyebrow" data-i18n="sb_eyebrow">Other channels</div>
+          <div class="sidebar-title" data-i18n="sb_title">Reach us directly</div>
+          <p class="sidebar-sub" data-i18n="sb_sub">We're available across multiple channels. Use whichever is most convenient for you.</p>
+        </div>
+
+        <div class="contact-cards">
+          <a href="mailto:info@beeeye.ca" class="contact-card">
+            <div class="cc-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="#6b7280" stroke-width="2"/><path d="M22 6l-10 7L2 6" stroke="#6b7280" stroke-width="2"/></svg>
+            </div>
+            <div>
+              <div class="cc-label" data-i18n="cc_email">Email</div>
+              <div class="cc-value">info@beeeye.ca</div>
+            </div>
+          </a>
+          <a href="https://t.me/beeeye_ca" target="_blank" rel="noopener" class="contact-card">
+            <div class="cc-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" stroke="#6b7280" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div>
+              <div class="cc-label">Telegram</div>
+              <div class="cc-value">@beeeye_ca</div>
+            </div>
+          </a>
+          <a href="tel:+16137078888" class="contact-card">
+            <div class="cc-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 01.22 2.18 2 2 0 012.22 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" stroke="#6b7280" stroke-width="2"/></svg>
+            </div>
+            <div>
+              <div class="cc-label" data-i18n="cc_phone">Phone (Canada)</div>
+              <div class="cc-value">+1 (613) 707-8888</div>
+            </div>
+          </a>
+          <div class="contact-card" style="cursor:default;">
+            <div class="cc-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" stroke="#6b7280" stroke-width="2"/><circle cx="12" cy="10" r="3" stroke="#6b7280" stroke-width="2"/></svg>
+            </div>
+            <div>
+              <div class="cc-label" data-i18n="cc_offices">Offices</div>
+              <div class="cc-value" data-i18n="cc_offices_val">Ottawa, Canada · Tashkent, Uzbekistan</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hours-box">
+          <div class="hours-eyebrow" data-i18n="hours_title">Business Hours</div>
+          <div class="hours-row">
+            <span class="hours-day" data-i18n="h_monFri">Monday – Friday</span>
+            <span class="hours-time">9:00 – 18:00 UZT</span>
+          </div>
+          <div class="hours-row">
+            <span class="hours-day" data-i18n="h_sat">Saturday</span>
+            <span class="hours-time">10:00 – 15:00 UZT</span>
+          </div>
+          <div class="hours-row">
+            <span class="hours-day" data-i18n="h_sun">Sunday</span>
+            <span class="hours-time" data-i18n="h_closed">Closed</span>
+          </div>
+          <div class="hours-row">
+            <span class="hours-day" data-i18n="h_email">Email response</span>
+            <span class="hours-time" data-i18n="h_24h">Within 24 hours</span>
+          </div>
+        </div>
+
+        <div class="lang-box">
+          <div class="lang-box-eyebrow" data-i18n="lang_box_title">We speak your language</div>
+          <div class="lang-items">
+            <div class="lang-item"><span class="lang-item-flag">🇺🇿</span> <span>O'zbek tili</span></div>
+            <div class="lang-item"><span class="lang-item-flag">🇷🇺</span> <span>Русский язык</span></div>
+            <div class="lang-item"><span class="lang-item-flag">🇨🇦</span> <span>English</span></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="cta-band">
+  <div class="cta-band-inner">
+    <div>
+      <h2 data-i18n="cta_h">Not sure what you need? Start with a free audit.</h2>
+      <p data-i18n="cta_p">We'll review your current digital presence and tell you exactly where the gaps are — no pitch, just clarity.</p>
+    </div>
+    <a href="#contact-form" class="btn-amber" data-i18n="cta_btn">Book Free Audit →</a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-bottom">
+    <p>&copy; 2025 <a href="index.html">BeeEye.ca</a> — <span data-i18n="footer_rights">All rights reserved.</span></p>
+    <p><a href="mailto:info@beeeye.ca">info@beeeye.ca</a> &nbsp;·&nbsp; <a href="https://t.me/beeeye_ca">Telegram</a></p>
+  </div>
+</footer>
+
+<script>
+const T = {
+  en: {
+    lang_tagline:"🍁 Canadian quality · Uzbekistan market",
+    nav_tagline:"Intelligent Systems", nav_services:"Our Services", nav_how:"How We Work",
+    nav_portfolio:"Results", nav_contact_lnk:"Contact", nav_cta:"Book an Audit", nav_home:"Home",
+    page_bc:"Contact", page_eyebrow:"06 / Get in Touch",
+    page_h1:"Let's build something for the Uzbekistan market",
+    page_sub:"Tell us about your project. We respond within 24 hours in Uzbek, Russian, or English — no obligation, no sales pressure.",
+    form_eyebrow:"Free Consultation",
+    form_title:"Get a free project audit",
+    form_sub:"Fill in the details below. We'll review your situation and come back with honest recommendations — even if that means you don't need us.",
+    field_name:"Your Name *", field_company:"Company / Business", field_email:"Email Address *",
+    field_phone:"Phone / Telegram", field_service:"Service Needed *", field_budget:"Budget Range",
+    field_msg:"About Your Project *", field_lang:"Preferred language for replies",
+    sel_default:"— Select —",
+    opt_web:"Website Design &amp; Development", opt_ecom:"E-Commerce Store",
+    opt_seo:"SEO &amp; Digital Marketing", opt_ai:"AI Integration / Chatbot",
+    opt_full:"Full Digital Package", opt_other:"Other / Not sure yet",
+    bud1:"Under $500", bud2:"$500 – $1,000", bud3:"$1,000 – $2,500",
+    bud4:"$2,500 – $5,000", bud5:"$5,000+",
+    btn_submit:"Send message →",
+    form_note:"We respond within 24 hours. Your information is kept private.",
+    ok_title:"Message received.", ok_sub:"Thank you for reaching out. We'll contact you within 24 hours to discuss your project in detail.",
+    sb_eyebrow:"Other channels", sb_title:"Reach us directly",
+    sb_sub:"We're available across multiple channels. Use whichever is most convenient for you.",
+    cc_email:"Email", cc_phone:"Phone (Canada)", cc_offices:"Offices",
+    cc_offices_val:"Ottawa, Canada · Tashkent, Uzbekistan",
+    hours_title:"Business Hours",
+    h_monFri:"Monday – Friday", h_sat:"Saturday", h_sun:"Sunday",
+    h_closed:"Closed", h_email:"Email response", h_24h:"Within 24 hours",
+    lang_box_title:"We speak your language",
+    cta_h:"Not sure what you need? Start with a free audit.",
+    cta_p:"We'll review your current digital presence and tell you exactly where the gaps are — no pitch, just clarity.",
+    cta_btn:"Book Free Audit →",
+    footer_rights:"All rights reserved."
+  },
+  ru: {
+    lang_tagline:"🍁 Канадское качество · Рынок Узбекистана",
+    nav_tagline:"Интеллектуальные системы", nav_services:"Наши услуги", nav_how:"Как мы работаем",
+    nav_portfolio:"Результаты", nav_contact_lnk:"Контакты", nav_cta:"Записаться на аудит", nav_home:"Главная",
+    page_bc:"Контакты", page_eyebrow:"06 / Связаться",
+    page_h1:"Давайте создадим что-то для рынка Узбекистана",
+    page_sub:"Расскажите о своём проекте. Мы ответим в течение 24 часов на узбекском, русском или английском — без обязательств и давления.",
+    form_eyebrow:"Бесплатная консультация",
+    form_title:"Получите бесплатный аудит проекта",
+    form_sub:"Заполните форму ниже. Мы изучим вашу ситуацию и дадим честные рекомендации — даже если окажется, что вам не нужны наши услуги.",
+    field_name:"Ваше имя *", field_company:"Компания / Бизнес", field_email:"Email *",
+    field_phone:"Телефон / Telegram", field_service:"Нужная услуга *", field_budget:"Бюджет",
+    field_msg:"О вашем проекте *", field_lang:"Предпочтительный язык для ответов",
+    sel_default:"— Выберите —",
+    opt_web:"Разработка и дизайн сайта", opt_ecom:"Интернет-магазин",
+    opt_seo:"SEO и цифровой маркетинг", opt_ai:"Интеграция ИИ / Чат-бот",
+    opt_full:"Полный цифровой пакет", opt_other:"Другое / Пока не знаю",
+    bud1:"До $500", bud2:"$500 – $1 000", bud3:"$1 000 – $2 500",
+    bud4:"$2 500 – $5 000", bud5:"От $5 000",
+    btn_submit:"Отправить сообщение →",
+    form_note:"Отвечаем в течение 24 часов. Ваши данные конфиденциальны.",
+    ok_title:"Сообщение получено.", ok_sub:"Спасибо, что написали. Мы свяжемся с вами в течение 24 часов для детального обсуждения проекта.",
+    sb_eyebrow:"Другие каналы", sb_title:"Свяжитесь напрямую",
+    sb_sub:"Мы доступны по нескольким каналам. Используйте тот, который вам удобнее.",
+    cc_email:"Email", cc_phone:"Телефон (Канада)", cc_offices:"Офисы",
+    cc_offices_val:"Оттава, Канада · Ташкент, Узбекистан",
+    hours_title:"Рабочие часы",
+    h_monFri:"Понедельник – Пятница", h_sat:"Суббота", h_sun:"Воскресенье",
+    h_closed:"Выходной", h_email:"Ответ по email", h_24h:"В течение 24 часов",
+    lang_box_title:"Мы говорим на вашем языке",
+    cta_h:"Не знаете, что нужно? Начните с бесплатного аудита.",
+    cta_p:"Мы проанализируем ваше текущее цифровое присутствие и точно скажем, где пробелы — без питча, просто ясность.",
+    cta_btn:"Заказать бесплатный аудит →",
+    footer_rights:"Все права защищены."
+  },
+  uz: {
+    lang_tagline:"🍁 Kanada sifati · O'zbekiston bozori",
+    nav_tagline:"Intelligent Systems", nav_services:"Xizmatlarimiz", nav_how:"Qanday ishlaymiz",
+    nav_portfolio:"Natijalar", nav_contact_lnk:"Aloqa", nav_cta:"Audit buyurtma qilish", nav_home:"Bosh sahifa",
+    page_bc:"Aloqa", page_eyebrow:"06 / Bog'lanish",
+    page_h1:"O'zbekiston bozori uchun birgalikda nimadir yarataylik",
+    page_sub:"Loyihangiz haqida ayting. 24 soat ichida o'zbek, rus yoki ingliz tilida javob beramiz — majburiyatsiz, bosim yo'q.",
+    form_eyebrow:"Bepul maslahat",
+    form_title:"Bepul loyiha auditi olish",
+    form_sub:"Quyidagi ma'lumotlarni to'ldiring. Vaziyatingizni ko'rib chiqib, halol tavsiyalar bilan qaytamiz — hatto bu bizga muhtoj emasligingizni anglatsa ham.",
+    field_name:"Ismingiz *", field_company:"Kompaniya / Biznes", field_email:"Email manzil *",
+    field_phone:"Telefon / Telegram", field_service:"Kerakli xizmat *", field_budget:"Byudjet",
+    field_msg:"Loyihangiz haqida *", field_lang:"Javoblar uchun afzal til",
+    sel_default:"— Tanlang —",
+    opt_web:"Veb-sayt dizayni va ishlab chiqish", opt_ecom:"Elektron tijorat do'koni",
+    opt_seo:"SEO va raqamli marketing", opt_ai:"AI integratsiyasi / Chatbot",
+    opt_full:"To'liq raqamli paket", opt_other:"Boshqa / Hali aniq emas",
+    bud1:"$500 dan kam", bud2:"$500 – $1 000", bud3:"$1 000 – $2 500",
+    bud4:"$2 500 – $5 000", bud5:"$5 000+",
+    btn_submit:"Xabar yuborish →",
+    form_note:"24 soat ichida javob beramiz. Ma'lumotlaringiz maxfiy saqlanadi.",
+    ok_title:"Xabar qabul qilindi.", ok_sub:"Murojaat qilganingiz uchun rahmat. Loyihangizni batafsil muhokama qilish uchun 24 soat ichida siz bilan bog'lanamiz.",
+    sb_eyebrow:"Boshqa kanallar", sb_title:"Bevosita bog'laning",
+    sb_sub:"Biz bir nechta kanal orqali mavjudmiz. O'zingizga qulay bo'lganini ishlating.",
+    cc_email:"Email", cc_phone:"Telefon (Kanada)", cc_offices:"Ofislar",
+    cc_offices_val:"Ottava, Kanada · Toshkent, O'zbekiston",
+    hours_title:"Ish vaqti",
+    h_monFri:"Dushanba – Juma", h_sat:"Shanba", h_sun:"Yakshanba",
+    h_closed:"Dam olish kuni", h_email:"Email javobi", h_24h:"24 soat ichida",
+    lang_box_title:"Biz sizning tilingizda gaplasamiz",
+    cta_h:"Nima kerakligini bilmaysizmi? Bepul auditdan boshlang.",
+    cta_p:"Joriy raqamli mavjudligingizni ko'rib chiqib, kamchiliklarni aniq ko'rsatamiz — pitch emas, shunchaki aniqlik.",
+    cta_btn:"Bepul audit buyurtma qilish →",
+    footer_rights:"Barcha huquqlar himoyalangan."
+  }
+};
+
+let lang = 'en';
+function setLang(l) {
+  lang = l;
+  const t = T[l];
+  ['en','ru','uz'].forEach(x => document.getElementById('btn-'+x).classList.toggle('active', x===l));
+  document.documentElement.lang = l;
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const k = el.getAttribute('data-i18n');
+    if (t[k] !== undefined) el.innerHTML = t[k];
+  });
+  document.querySelectorAll('select option[data-i18n]').forEach(opt => {
+    const k = opt.getAttribute('data-i18n');
+    if (t[k] !== undefined) opt.textContent = t[k].replace(/&amp;/g,'&');
+  });
+  try { localStorage.setItem('bl', l); } catch(e) {}
+}
+
+function toggleMobile() { document.getElementById('mobile-nav').classList.toggle('open'); }
+
+function handleSubmit(e) {
+  e.preventDefault();
+  const t = T[lang];
+  document.getElementById('contact-form').style.display = 'none';
+  const s = document.getElementById('success-msg');
+  s.style.display = 'block';
+  s.querySelector('h3').textContent = t.ok_title;
+  s.querySelector('p').textContent = t.ok_sub;
+}
+
+try { const s = localStorage.getItem('bl'); if (s && T[s]) setLang(s); } catch(e) {}
+</script>
+</body>
+</html>

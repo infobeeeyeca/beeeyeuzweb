@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Results — BeeEye.ca</title>
+  <meta name="description" content="Real results from BeeEye.ca client projects — websites, e-commerce and digital systems built for Uzbekistan and international businesses.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --black: #0a0a0a; --white: #ffffff; --off: #f7f7f5;
+      --amber: #f5a623; --amber-d: #e0941a;
+      --muted: #6b7280; --border: #e5e5e5;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', -apple-system, sans-serif; background: var(--white); color: var(--black); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+
+    .lang-bar { background: var(--black); padding: 0.45rem 2rem; display: flex; justify-content: space-between; align-items: center; }
+    .lang-bar-left { font-size: 12px; color: #555; letter-spacing: 0.04em; }
+    .lang-bar-left span { color: var(--amber); }
+    .lang-switcher { display: flex; gap: 0.25rem; }
+    .lang-btn { background: transparent; border: 1px solid #333; color: #666; padding: 0.2rem 0.6rem; border-radius: 3px; font-size: 11px; font-weight: 600; letter-spacing: 0.06em; cursor: pointer; font-family: inherit; transition: all 0.15s; }
+    .lang-btn:hover { border-color: var(--amber); color: var(--amber); }
+    .lang-btn.active { background: var(--amber); border-color: var(--amber); color: var(--black); }
+
+    nav { position: sticky; top: 0; z-index: 999; background: var(--white); border-bottom: 1px solid var(--border); }
+    .nav-inner { max-width: 1200px; margin: 0 auto; padding: 0 2rem; height: 64px; display: flex; align-items: center; justify-content: space-between; }
+    .nav-logo { display: flex; flex-direction: column; text-decoration: none; }
+    .nav-logo-name { font-size: 18px; font-weight: 800; color: var(--black); letter-spacing: -0.03em; line-height: 1; }
+    .nav-logo-name em { color: var(--amber); font-style: normal; }
+    .nav-logo-tagline { font-size: 9px; color: var(--muted); letter-spacing: 0.12em; text-transform: uppercase; margin-top: 2px; }
+    .nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
+    .nav-links a { text-decoration: none; font-size: 13px; font-weight: 500; color: var(--muted); transition: color 0.15s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--black); font-weight: 600; }
+    .btn-nav { background: var(--black); color: var(--white); padding: 0.55rem 1.25rem; border-radius: 6px; font-size: 13px; font-weight: 600; text-decoration: none; transition: background 0.15s; }
+    .btn-nav:hover { background: #222; }
+    .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; }
+    .hamburger span { width: 22px; height: 2px; background: var(--black); display: block; }
+    .mobile-nav { display: none; background: var(--white); border-bottom: 1px solid var(--border); padding: 1rem 2rem 1.5rem; }
+    .mobile-nav.open { display: block; }
+    .mobile-nav a { display: block; padding: 0.6rem 0; font-size: 15px; font-weight: 500; color: var(--black); text-decoration: none; border-bottom: 1px solid var(--border); }
+    .mobile-nav a:last-child { border-bottom: none; }
+    .mobile-nav .btn-nav { display: block; text-align: center; margin-top: 1rem; }
+
+    .page-header { padding: 4rem 2rem 3.5rem; border-bottom: 1px solid var(--border); }
+    .page-header-inner { max-width: 1200px; margin: 0 auto; }
+    .breadcrumb { font-size: 12px; color: var(--muted); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem; }
+    .breadcrumb a { color: var(--muted); text-decoration: none; }
+    .breadcrumb span { color: var(--border); }
+    .page-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 1rem; }
+    .page-header h1 { font-size: clamp(32px, 5vw, 56px); font-weight: 800; letter-spacing: -0.03em; line-height: 1.1; max-width: 760px; margin-bottom: 1rem; }
+    .page-header p { font-size: 17px; color: var(--muted); max-width: 560px; line-height: 1.75; }
+
+    .section { padding: 5rem 2rem; }
+    .section-inner { max-width: 1200px; margin: 0 auto; }
+    .section-alt { background: var(--off); }
+    .divider { height: 1px; background: var(--border); }
+
+    /* Case studies */
+    .case-list { display: flex; flex-direction: column; gap: 0; }
+    .case-item {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+      padding: 4rem 0;
+      border-bottom: 1px solid var(--border);
+      align-items: start;
+    }
+    .case-item:last-child { border-bottom: none; }
+    .case-label { font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--amber); margin-bottom: 0.75rem; }
+    .case-title { font-size: clamp(22px, 3vw, 32px); font-weight: 800; letter-spacing: -0.025em; line-height: 1.15; margin-bottom: 0.5rem; }
+    .case-subtitle { font-size: 13px; color: var(--muted); font-weight: 500; margin-bottom: 1.25rem; }
+    .case-desc { font-size: 15px; color: var(--muted); line-height: 1.8; margin-bottom: 1.5rem; }
+    .case-results { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem; }
+    .result-pill { font-size: 12px; font-weight: 700; padding: 0.3rem 0.85rem; border-radius: 3px; background: #ecfdf5; color: #065f46; border: 1px solid #a7f3d0; }
+    .tag-list { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+    .tag { font-size: 11px; font-weight: 600; padding: 0.2rem 0.6rem; border-radius: 3px; border: 1px solid var(--border); color: var(--muted); background: var(--off); letter-spacing: 0.02em; }
+
+    .case-visual {
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+    .case-thumb {
+      height: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    .ct-1 { background: linear-gradient(145deg, #012a4a, #023e73); }
+    .ct-2 { background: linear-gradient(145deg, #0a0a0a, #1a1a2e); }
+    .ct-3 { background: linear-gradient(145deg, #052e16, #065f46); }
+    .ct-4 { background: linear-gradient(145deg, #431407, #7c2d12); }
+    .ct-5 { background: linear-gradient(145deg, #2e1065, #4c1d95); }
+    .ct-6 { background: linear-gradient(145deg, #0c2442, #0c4a6e); }
+    .case-emoji { font-size: 52px; opacity: 0.9; }
+    .case-badge {
+      position: absolute;
+      top: 1rem; right: 1rem;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.15);
+      color: rgba(255,255,255,0.8);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.25rem 0.65rem;
+      border-radius: 3px;
+    }
+    .case-lang-chips {
+      position: absolute;
+      bottom: 1rem; left: 1rem;
+      display: flex;
+      gap: 0.3rem;
+    }
+    .lang-chip {
+      background: rgba(0,0,0,0.5);
+      color: rgba(255,255,255,0.85);
+      font-size: 10px;
+      font-weight: 700;
+      padding: 0.2rem 0.5rem;
+      border-radius: 3px;
+    }
+    .case-stats-row {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      border-top: 1px solid var(--border);
+    }
+    .case-stat {
+      padding: 1rem 1.25rem;
+      border-right: 1px solid var(--border);
+    }
+    .case-stat:last-child { border-right: none; }
+    .case-stat-n { font-size: 22px; font-weight: 800; letter-spacing: -0.02em; color: var(--amber-d); line-height: 1; }
+    .case-stat-l { font-size: 11px; color: var(--muted); font-weight: 500; margin-top: 0.2rem; }
+
+    .testimonial-mini {
+      background: var(--off);
+      border-left: 3px solid var(--amber);
+      padding: 1rem 1.25rem;
+      border-radius: 0 6px 6px 0;
+      margin-top: 1.5rem;
+    }
+    .testimonial-mini p { font-size: 13px; font-style: italic; color: var(--muted); line-height: 1.7; margin-bottom: 0.4rem; }
+    .testimonial-mini-author { font-size: 11px; font-weight: 700; color: var(--black); letter-spacing: 0.04em; text-transform: uppercase; }
+
+    /* CTA */
+    .cta-band { background: var(--black); padding: 5rem 2rem; }
+    .cta-band-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr; gap: 2.5rem; align-items: center; }
+    .cta-band h2 { font-size: clamp(26px, 3.5vw, 40px); font-weight: 800; letter-spacing: -0.025em; line-height: 1.15; color: var(--white); }
+    .cta-band p { font-size: 15px; color: #666; line-height: 1.75; margin-top: 0.75rem; }
+    .btn-amber { background: var(--amber); color: var(--black); padding: 0.85rem 1.75rem; border-radius: 6px; font-size: 14px; font-weight: 700; text-decoration: none; transition: background 0.15s; display: inline-block; white-space: nowrap; }
+    .btn-amber:hover { background: var(--amber-d); }
+
+    footer { background: var(--black); border-top: 1px solid #1a1a1a; padding: 2rem; text-align: center; }
+    .footer-bottom { max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 0.4rem; }
+    .footer-bottom p { font-size: 12px; color: #333; }
+    .footer-bottom a { color: #444; text-decoration: none; }
+    .footer-bottom a:hover { color: var(--amber); }
+
+    @media (max-width: 767px) {
+      .nav-links { display: none; } .hamburger { display: flex; }
+      .section { padding: 3.5rem 1.5rem; } .page-header { padding: 3rem 1.5rem 2.5rem; }
+      .lang-bar { padding: 0.45rem 1.5rem; } .case-item { padding: 3rem 0; }
+    }
+    @media (min-width: 768px) {
+      .case-item { grid-template-columns: 1fr 340px; }
+      .cta-band-inner { grid-template-columns: 1fr auto; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="lang-bar">
+  <span class="lang-bar-left"><span data-i18n="lang_tagline">🍁 Canadian quality · Uzbekistan market</span></span>
+  <div class="lang-switcher">
+    <button class="lang-btn active" onclick="setLang('en')" id="btn-en">EN</button>
+    <button class="lang-btn" onclick="setLang('ru')" id="btn-ru">RU</button>
+    <button class="lang-btn" onclick="setLang('uz')" id="btn-uz">UZ</button>
+  </div>
+</div>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <span class="nav-logo-name">Bee<em>Eye</em>.ca</span>
+      <span class="nav-logo-tagline" data-i18n="nav_tagline">Intelligent Systems</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="services.html" data-i18n="nav_services">Our Services</a></li>
+      <li><a href="index.html#how" data-i18n="nav_how">How We Work</a></li>
+      <li><a href="portfolio.html" class="active" data-i18n="nav_portfolio">Results</a></li>
+      <li><a href="contact.html" data-i18n="nav_contact_lnk">Contact</a></li>
+      <li><a href="contact.html" class="btn-nav" data-i18n="nav_cta">Book an Audit</a></li>
+    </ul>
+    <button class="hamburger" onclick="toggleMobile()"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mobile-nav" id="mobile-nav">
+  <a href="services.html" onclick="toggleMobile()" data-i18n="nav_services">Our Services</a>
+  <a href="index.html#how" onclick="toggleMobile()" data-i18n="nav_how">How We Work</a>
+  <a href="portfolio.html" data-i18n="nav_portfolio">Results</a>
+  <a href="contact.html" data-i18n="nav_contact_lnk">Contact</a>
+  <a href="contact.html" class="btn-nav" data-i18n="nav_cta">Book an Audit</a>
+</div>
+
+<div class="page-header">
+  <div class="page-header-inner">
+    <div class="breadcrumb">
+      <a href="index.html" data-i18n="nav_home">Home</a>
+      <span>/</span>
+      <span data-i18n="page_bc">Results</span>
+    </div>
+    <div class="page-eyebrow" data-i18n="page_eyebrow">05 / Client Results</div>
+    <h1 data-i18n="page_h1">What happens when the right digital foundation is in place</h1>
+    <p data-i18n="page_sub">Real results from real clients. Every metric is verified. No manufactured case studies.</p>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<section class="section">
+  <div class="section-inner">
+    <div class="case-list">
+
+      <!-- Case 1 -->
+      <div class="case-item">
+        <div>
+          <div class="case-label" data-i18n="c1_label">HVAC · Ottawa, Canada</div>
+          <div class="case-title">J.C. Robinson & Sons</div>
+          <div class="case-subtitle" data-i18n="c1_sub">Corporate website redesign · English</div>
+          <p class="case-desc" data-i18n="c1_desc">A 100-year-old Ottawa HVAC company came to us with an outdated site that loaded slowly and ranked nowhere. We rebuilt it from scratch: mobile-first, service-area targeted, SEO-structured, and built to capture emergency heating and cooling inquiries 24/7.</p>
+          <div class="case-results">
+            <span class="result-pill" data-i18n="c1_r1">↑ 55% organic traffic in 90 days</span>
+            <span class="result-pill" data-i18n="c1_r2">↑ 30% inbound phone leads</span>
+            <span class="result-pill" data-i18n="c1_r3">&lt;1.8s page load time</span>
+          </div>
+          <div class="tag-list">
+            <span class="tag">Web Design</span><span class="tag">SEO</span><span class="tag">Google Maps</span><span class="tag">Mobile-First</span>
+          </div>
+          <div class="testimonial-mini">
+            <p data-i18n="c1_quote">"BeeEye understood our brand and what 100 years of reputation means. The site perfectly represents who we are — and the results speak for themselves."</p>
+            <div class="testimonial-mini-author" data-i18n="c1_author">— Management, J.C. Robinson & Sons</div>
+          </div>
+        </div>
+        <div class="case-visual">
+          <div class="case-thumb ct-1">
+            <span class="case-emoji">🔧</span>
+            <span class="case-badge" data-i18n="badge_hvac">HVAC</span>
+            <div class="case-lang-chips"><span class="lang-chip">🇨🇦 EN</span></div>
+          </div>
+          <div class="case-stats-row">
+            <div class="case-stat"><div class="case-stat-n">+55%</div><div class="case-stat-l" data-i18n="stat_traffic">Organic traffic</div></div>
+            <div class="case-stat"><div class="case-stat-n">+30%</div><div class="case-stat-l" data-i18n="stat_leads">Phone leads</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Case 2 -->
+      <div class="case-item">
+        <div>
+          <div class="case-label" data-i18n="c2_label">E-Commerce · Tashkent, Uzbekistan</div>
+          <div class="case-title" data-i18n="c2_title">Toshkent Boutique</div>
+          <div class="case-subtitle" data-i18n="c2_sub">Trilingual fashion store · UZ · RU · EN</div>
+          <p class="case-desc" data-i18n="c2_desc">A Tashkent clothing brand was selling through Instagram DMs and losing potential customers who couldn't pay digitally. We built a full trilingual e-commerce store with Payme and Click integration, a Telegram bot for order notifications, and a mobile-first product catalogue.</p>
+          <div class="case-results">
+            <span class="result-pill" data-i18n="c2_r1">↑ 40% online revenue in 60 days</span>
+            <span class="result-pill" data-i18n="c2_r2">3 languages simultaneously</span>
+            <span class="result-pill" data-i18n="c2_r3">Payme + Click live on day 1</span>
+          </div>
+          <div class="tag-list">
+            <span class="tag">E-Commerce</span><span class="tag">Payme API</span><span class="tag">Click API</span><span class="tag">Telegram Bot</span><span class="tag">UZ · RU · EN</span>
+          </div>
+          <div class="testimonial-mini">
+            <p data-i18n="c2_quote">"Our customers can now shop in Uzbek, Russian, or English. Sales went up 40% in the first two months. The Telegram notifications for orders are perfect."</p>
+            <div class="testimonial-mini-author" data-i18n="c2_author">— Malika K., Owner</div>
+          </div>
+        </div>
+        <div class="case-visual">
+          <div class="case-thumb ct-2">
+            <span class="case-emoji">👗</span>
+            <span class="case-badge" data-i18n="badge_ecom">E-COMMERCE</span>
+            <div class="case-lang-chips">
+              <span class="lang-chip">🇺🇿 UZ</span><span class="lang-chip">🇷🇺 RU</span><span class="lang-chip">EN</span>
+            </div>
+          </div>
+          <div class="case-stats-row">
+            <div class="case-stat"><div class="case-stat-n">+40%</div><div class="case-stat-l" data-i18n="stat_revenue">Online revenue</div></div>
+            <div class="case-stat"><div class="case-stat-n">3</div><div class="case-stat-l" data-i18n="stat_langs">Languages live</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Case 3 -->
+      <div class="case-item">
+        <div>
+          <div class="case-label" data-i18n="c3_label">Hospitality · Samarkand, Uzbekistan</div>
+          <div class="case-title" data-i18n="c3_title">Samarkand Hotel Group</div>
+          <div class="case-subtitle" data-i18n="c3_sub">Booking platform + AI chatbot · UZ · RU · EN</div>
+          <p class="case-desc" data-i18n="c3_desc">A boutique hotel chain near Samarkand's UNESCO sites was losing direct bookings to OTAs. We built a trilingual booking platform with real-time availability, a multilingual AI chatbot that answers 70% of guest inquiries automatically, and Google Hotels integration.</p>
+          <div class="case-results">
+            <span class="result-pill" data-i18n="c3_r1">↑ 62% direct bookings (vs OTA)</span>
+            <span class="result-pill" data-i18n="c3_r2">70% inquiries automated by AI</span>
+            <span class="result-pill" data-i18n="c3_r3">3 hours/day saved on messaging</span>
+          </div>
+          <div class="tag-list">
+            <span class="tag">Booking Platform</span><span class="tag">AI Chatbot</span><span class="tag">Google Hotels</span><span class="tag">UZ · RU · EN</span>
+          </div>
+          <div class="testimonial-mini">
+            <p data-i18n="c3_quote">"The AI chatbot handles most questions automatically. Our team now focuses on guests, not repetitive messages. Direct bookings are up 62% versus OTA platforms."</p>
+            <div class="testimonial-mini-author" data-i18n="c3_author">— Sherzod R., Director</div>
+          </div>
+        </div>
+        <div class="case-visual">
+          <div class="case-thumb ct-3">
+            <span class="case-emoji">🏨</span>
+            <span class="case-badge" data-i18n="badge_hotel">HOTEL</span>
+            <div class="case-lang-chips">
+              <span class="lang-chip">🇺🇿 UZ</span><span class="lang-chip">🇷🇺 RU</span><span class="lang-chip">EN</span>
+            </div>
+          </div>
+          <div class="case-stats-row">
+            <div class="case-stat"><div class="case-stat-n">+62%</div><div class="case-stat-l" data-i18n="stat_bookings">Direct bookings</div></div>
+            <div class="case-stat"><div class="case-stat-n">70%</div><div class="case-stat-l" data-i18n="stat_automated">Inquiries automated</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Case 4 -->
+      <div class="case-item">
+        <div>
+          <div class="case-label" data-i18n="c4_label">Construction · Tashkent, Uzbekistan</div>
+          <div class="case-title" data-i18n="c4_title">Qurilish Pro</div>
+          <div class="case-subtitle" data-i18n="c4_sub">Corporate website + lead generation · UZ · RU</div>
+          <p class="case-desc" data-i18n="c4_desc">A leading Tashkent construction company had zero online presence. We built a bilingual corporate site with project gallery, service catalogue, client portal for project updates, and a lead capture system integrated with their CRM.</p>
+          <div class="case-results">
+            <span class="result-pill" data-i18n="c4_r1">↑ 3× contact form submissions</span>
+            <span class="result-pill" data-i18n="c4_r2">↑ 85% improvement in lead quality</span>
+          </div>
+          <div class="tag-list">
+            <span class="tag">Corporate Site</span><span class="tag">CRM Integration</span><span class="tag">Yandex.Maps</span><span class="tag">UZ · RU</span>
+          </div>
+        </div>
+        <div class="case-visual">
+          <div class="case-thumb ct-4">
+            <span class="case-emoji">🏗️</span>
+            <span class="case-badge" data-i18n="badge_construction">CONSTRUCTION</span>
+            <div class="case-lang-chips">
+              <span class="lang-chip">🇺🇿 UZ</span><span class="lang-chip">🇷🇺 RU</span>
+            </div>
+          </div>
+          <div class="case-stats-row">
+            <div class="case-stat"><div class="case-stat-n">3×</div><div class="case-stat-l" data-i18n="stat_forms">Form submissions</div></div>
+            <div class="case-stat"><div class="case-stat-n">+85%</div><div class="case-stat-l" data-i18n="stat_quality">Lead quality</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Case 5 -->
+      <div class="case-item">
+        <div>
+          <div class="case-label" data-i18n="c5_label">Education · Namangan, Uzbekistan</div>
+          <div class="case-title" data-i18n="c5_title">Namangan IT Academy</div>
+          <div class="case-subtitle" data-i18n="c5_sub">Education platform + automated enrollment · UZ · RU · EN</div>
+          <p class="case-desc" data-i18n="c5_desc">An IT training centre was managing all enrollments manually via Telegram DMs. We built a trilingual education platform with course catalogue, online enrollment, student portal, automated payment processing, and Telegram notifications for class reminders.</p>
+          <div class="case-results">
+            <span class="result-pill" data-i18n="c5_r1">↑ 2× student enrollments</span>
+            <span class="result-pill" data-i18n="c5_r2">Fully automated admissions</span>
+            <span class="result-pill" data-i18n="c5_r3">0 manual enrollment hours</span>
+          </div>
+          <div class="tag-list">
+            <span class="tag">Education Platform</span><span class="tag">Student Portal</span><span class="tag">Telegram API</span><span class="tag">UZ · RU · EN</span>
+          </div>
+        </div>
+        <div class="case-visual">
+          <div class="case-thumb ct-5">
+            <span class="case-emoji">🎓</span>
+            <span class="case-badge" data-i18n="badge_education">EDUCATION</span>
+            <div class="case-lang-chips">
+              <span class="lang-chip">🇺🇿 UZ</span><span class="lang-chip">🇷🇺 RU</span><span class="lang-chip">EN</span>
+            </div>
+          </div>
+          <div class="case-stats-row">
+            <div class="case-stat"><div class="case-stat-n">2×</div><div class="case-stat-l" data-i18n="stat_enrollments">Enrollments</div></div>
+            <div class="case-stat"><div class="case-stat-n">0h</div><div class="case-stat-l" data-i18n="stat_manual">Manual work</div></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-band">
+  <div class="cta-band-inner">
+    <div>
+      <h2 data-i18n="cta_h">Your business could be the next case study</h2>
+      <p data-i18n="cta_p">Book a free 30-minute audit. We'll identify exactly what's holding your digital presence back — and what to do about it.</p>
+    </div>
+    <a href="contact.html" class="btn-amber" data-i18n="cta_btn">Book Free Audit →</a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-bottom">
+    <p>&copy; 2025 <a href="index.html">BeeEye.ca</a> — <span data-i18n="footer_rights">All rights reserved.</span></p>
+    <p><a href="mailto:info@beeeye.ca">info@beeeye.ca</a> · <a href="https://t.me/beeeye_ca">Telegram: @beeeye_ca</a></p>
+  </div>
+</footer>
+
+<script>
+const T = {
+  en: {
+    lang_tagline:"🍁 Canadian quality · Uzbekistan market", nav_tagline:"Intelligent Systems",
+    nav_services:"Our Services", nav_how:"How We Work", nav_portfolio:"Results", nav_contact_lnk:"Contact", nav_cta:"Book an Audit", nav_home:"Home",
+    page_bc:"Results", page_eyebrow:"05 / Client Results",
+    page_h1:"What happens when the right digital foundation is in place",
+    page_sub:"Real results from real clients. Every metric is verified. No manufactured case studies.",
+    c1_label:"HVAC · Ottawa, Canada", c1_sub:"Corporate website redesign · English",
+    c1_desc:"A 100-year-old Ottawa HVAC company came to us with an outdated site that loaded slowly and ranked nowhere. We rebuilt it from scratch: mobile-first, service-area targeted, SEO-structured, and built to capture emergency inquiries 24/7.",
+    c1_r1:"↑ 55% organic traffic in 90 days", c1_r2:"↑ 30% inbound phone leads", c1_r3:"<1.8s page load time",
+    c1_quote:'"BeeEye understood our brand and what 100 years of reputation means. The site perfectly represents who we are."',
+    c1_author:"— Management, J.C. Robinson & Sons",
+    c2_label:"E-Commerce · Tashkent, Uzbekistan", c2_title:"Toshkent Boutique", c2_sub:"Trilingual fashion store · UZ · RU · EN",
+    c2_desc:"A Tashkent clothing brand was selling through Instagram DMs and losing customers who couldn't pay digitally. We built a full trilingual e-commerce store with Payme/Click integration and Telegram order notifications.",
+    c2_r1:"↑ 40% online revenue in 60 days", c2_r2:"3 languages simultaneously", c2_r3:"Payme + Click live on day 1",
+    c2_quote:'"Sales went up 40% in the first two months. The Telegram order notifications are perfect."',
+    c2_author:"— Malika K., Owner",
+    c3_label:"Hospitality · Samarkand, Uzbekistan", c3_title:"Samarkand Hotel Group", c3_sub:"Booking platform + AI chatbot · UZ · RU · EN",
+    c3_desc:"A boutique hotel chain near Samarkand's UNESCO sites was losing direct bookings to OTAs. We built a trilingual booking platform with real-time availability, an AI chatbot handling 70% of guest inquiries, and Google Hotels integration.",
+    c3_r1:"↑ 62% direct bookings (vs OTA)", c3_r2:"70% inquiries automated by AI", c3_r3:"3 hours/day saved on messaging",
+    c3_quote:'"The AI chatbot handles most questions automatically. Direct bookings are up 62% versus OTA platforms."',
+    c3_author:"— Sherzod R., Director",
+    c4_label:"Construction · Tashkent, Uzbekistan", c4_title:"Qurilish Pro", c4_sub:"Corporate website + lead generation · UZ · RU",
+    c4_desc:"A leading Tashkent construction company had zero online presence. We built a bilingual corporate site with project gallery, service catalogue, client portal, and CRM-integrated lead capture.",
+    c4_r1:"↑ 3× contact form submissions", c4_r2:"↑ 85% improvement in lead quality",
+    c5_label:"Education · Namangan, Uzbekistan", c5_title:"Namangan IT Academy", c5_sub:"Education platform + automated enrollment · UZ · RU · EN",
+    c5_desc:"An IT training centre managing all enrollments manually via Telegram DMs. We built a trilingual platform with course catalogue, online enrollment, student portal, automated payment, and Telegram class reminders.",
+    c5_r1:"↑ 2× student enrollments", c5_r2:"Fully automated admissions", c5_r3:"0 manual enrollment hours",
+    badge_hvac:"HVAC", badge_ecom:"E-COMMERCE", badge_hotel:"HOTEL", badge_construction:"CONSTRUCTION", badge_education:"EDUCATION",
+    stat_traffic:"Organic traffic", stat_leads:"Phone leads", stat_revenue:"Online revenue", stat_langs:"Languages live",
+    stat_bookings:"Direct bookings", stat_automated:"Inquiries automated", stat_forms:"Form submissions",
+    stat_quality:"Lead quality", stat_enrollments:"Enrollments", stat_manual:"Manual work",
+    cta_h:"Your business could be the next case study",
+    cta_p:"Book a free 30-minute audit. We'll identify what's holding your digital presence back.",
+    cta_btn:"Book Free Audit →", footer_rights:"All rights reserved."
+  },
+  ru: {
+    lang_tagline:"🍁 Канадское качество · Рынок Узбекистана", nav_tagline:"Интеллектуальные системы",
+    nav_services:"Наши услуги", nav_how:"Как мы работаем", nav_portfolio:"Результаты", nav_contact_lnk:"Контакты", nav_cta:"Записаться на аудит", nav_home:"Главная",
+    page_bc:"Результаты", page_eyebrow:"05 / Результаты клиентов",
+    page_h1:"Что происходит, когда правильная цифровая основа на месте",
+    page_sub:"Реальные результаты от реальных клиентов. Каждая метрика проверена. Никаких придуманных кейсов.",
+    c1_label:"HVAC · Оттава, Канада", c1_sub:"Редизайн корпоративного сайта · Английский",
+    c1_desc:"Оттавская HVAC-компания со 100-летней историей обратилась к нам с медленным сайтом без позиций в поиске. Мы пересобрали его с нуля: мобильный приоритет, таргетинг по зоне обслуживания, SEO-структура и захват экстренных заявок 24/7.",
+    c1_r1:"↑ 55% органического трафика за 90 дней", c1_r2:"↑ 30% входящих звонков", c1_r3:"<1.8 сек время загрузки",
+    c1_quote:'"BeeEye понял наш бренд и что значат 100 лет репутации. Сайт идеально представляет нас."',
+    c1_author:"— Руководство, J.C. Robinson & Sons",
+    c2_label:"E-Commerce · Ташкент, Узбекистан", c2_title:"Ташкентский бутик", c2_sub:"Трёхъязычный магазин · UZ · RU · EN",
+    c2_desc:"Бренд одежды из Ташкента продавал через Instagram DM и терял клиентов, которые не могли платить онлайн. Мы создали полноценный трёхъязычный магазин с Payme/Click и Telegram-ботом.",
+    c2_r1:"↑ 40% онлайн-выручки за 60 дней", c2_r2:"3 языка одновременно", c2_r3:"Payme + Click с первого дня",
+    c2_quote:'"Продажи выросли на 40% за первые два месяца. Telegram-уведомления о заказах — идеально."',
+    c2_author:"— Малика К., Владелец",
+    c3_label:"Гостиничный бизнес · Самарканд, Узбекистан", c3_title:"Samarkand Hotel Group", c3_sub:"Платформа бронирования + ИИ-чат-бот · UZ · RU · EN",
+    c3_desc:"Сеть бутик-отелей у объектов ЮНЕСКО в Самарканде теряла прямые бронирования в пользу OTA. Мы создали трёхъязычную платформу бронирования с ИИ-чат-ботом, обрабатывающим 70% запросов, и интеграцией с Google Hotels.",
+    c3_r1:"↑ 62% прямых бронирований", c3_r2:"70% запросов автоматизировано", c3_r3:"3 ч/день экономии на сообщениях",
+    c3_quote:'"ИИ-чат-бот обрабатывает большинство вопросов автоматически. Прямые бронирования выросли на 62%."',
+    c3_author:"— Шерзод Р., Директор",
+    c4_label:"Строительство · Ташкент, Узбекистан", c4_title:"Qurilish Pro", c4_sub:"Корпоративный сайт + лидогенерация · UZ · RU",
+    c4_desc:"Ведущая ташкентская строительная компания не имела онлайн-присутствия. Мы создали двуязычный корпоративный сайт с галереей проектов, каталогом услуг, клиентским порталом и CRM-интеграцией.",
+    c4_r1:"↑ 3× отправок формы обратной связи", c4_r2:"↑ 85% улучшение качества лидов",
+    c5_label:"Образование · Наманган, Узбекистан", c5_title:"Namanган IT Академия", c5_sub:"Образовательная платформа + автоматизация приёма · UZ · RU · EN",
+    c5_desc:"IT-учебный центр вёл все записи вручную через Telegram. Мы создали трёхъязычную платформу с каталогом курсов, онлайн-записью, студенческим порталом и Telegram-напоминаниями.",
+    c5_r1:"↑ 2× число зачислений", c5_r2:"Полностью автоматизированный приём", c5_r3:"0 часов ручной работы",
+    badge_hvac:"HVAC", badge_ecom:"E-COMMERCE", badge_hotel:"ОТЕЛЬ", badge_construction:"СТРОИТЕЛЬСТВО", badge_education:"ОБРАЗОВАНИЕ",
+    stat_traffic:"Органический трафик", stat_leads:"Телефонные лиды", stat_revenue:"Онлайн-выручка", stat_langs:"Активных языков",
+    stat_bookings:"Прямые бронирования", stat_automated:"Автоматизировано запросов", stat_forms:"Отправок формы",
+    stat_quality:"Качество лидов", stat_enrollments:"Зачислений", stat_manual:"Ручной работы",
+    cta_h:"Ваш бизнес может стать следующим кейсом",
+    cta_p:"Запишитесь на бесплатный 30-минутный аудит. Выявим, что сдерживает ваше цифровое присутствие.",
+    cta_btn:"Заказать бесплатный аудит →", footer_rights:"Все права защищены."
+  },
+  uz: {
+    lang_tagline:"🍁 Kanada sifati · O'zbekiston bozori", nav_tagline:"Intelligent Systems",
+    nav_services:"Xizmatlarimiz", nav_how:"Qanday ishlaymiz", nav_portfolio:"Natijalar", nav_contact_lnk:"Aloqa", nav_cta:"Audit buyurtma qilish", nav_home:"Bosh sahifa",
+    page_bc:"Natijalar", page_eyebrow:"05 / Mijozlar natijalari",
+    page_h1:"To'g'ri raqamli poydevor o'rnatilganda nima sodir bo'ladi",
+    page_sub:"Haqiqiy mijozlardan haqiqiy natijalar. Har bir ko'rsatkich tekshirilgan. O'ylab topilgan keis-stadiyalar yo'q.",
+    c1_label:"HVAC · Ottava, Kanada", c1_sub:"Korporativ sayt qayta dizayni · Ingliz tili",
+    c1_desc:"100 yillik Ottava HVAC kompaniyasi sekin yuklanuvchi va qidiruv tizimlarida ko'rinmaydigan sayt bilan keldi. Biz uni noldan qayta qurdik: mobil-birinchi, xizmat ko'rsatish hududiga moslashtirilgan, SEO-tuzilgan.",
+    c1_r1:"↑ 55% organik trafik 90 kunda", c1_r2:"↑ 30% kiruvchi telefon lidlari", c1_r3:"<1.8 son sahifa yuklanish vaqti",
+    c1_quote:'"BeeEye brendimizni va 100 yillik obro\'imiz nima ekanligini tushundi. Sayt bizni mukammal ifodalaydi."',
+    c1_author:"— Rahbariyat, J.C. Robinson & Sons",
+    c2_label:"Elektron tijorat · Toshkent, O'zbekiston", c2_title:"Toshkent Butik", c2_sub:"Uch tilli moda do'koni · UZ · RU · EN",
+    c2_desc:"Toshkent kiyim brendi Instagram DM orqali sotib, raqamli to'lолиy olmaydigan mijozlarni yo'qotardi. Biz Payme/Click va Telegram buyurtma bildirg'ichlari bilan to'liq uch tilli elektron tijorat do'konini yaratdik.",
+    c2_r1:"↑ 40% onlayn daromad 60 kunda", c2_r2:"3 til bir vaqtda", c2_r3:"Payme + Click 1-kunda faol",
+    c2_quote:'"Savdo birinchi ikki oyda 40% oshdi. Telegram buyurtma bildirg\'ichlari mukammal."',
+    c2_author:"— Malika K., Egasi",
+    c3_label:"Mehmonxona · Samarqand, O'zbekiston", c3_title:"Samarqand Hotel Group", c3_sub:"Bron qilish platformasi + AI chatbot · UZ · RU · EN",
+    c3_desc:"Samarqandning YuNESKO ob'ektlari yonidagi butik mehmonxonalar tarmog'i to'g'ridan-to'g'ri bronlarni OTAlarga yo'qotardi. So'rovlarning 70% ni avtomatik boshqaruvchi AI chatbot va Google Hotels integratsiyasi bilan uch tilli bron qilish platformasini yaratdik.",
+    c3_r1:"↑ 62% to'g'ridan-to'g'ri bronlar", c3_r2:"AI tomonidan 70% so'rov avtomatlashtirildi", c3_r3:"Kuniga 3 soat xabarlashishda tejaldi",
+    c3_quote:'"AI chatbot aksariyat savollarni avtomatik hal qiladi. To\'g\'ridan-to\'g\'ri bronlar OTA platformalaridan 62% ko\'paydi."',
+    c3_author:"— Sherzod R., Direktor",
+    c4_label:"Qurilish · Toshkent, O'zbekiston", c4_title:"Qurilish Pro", c4_sub:"Korporativ sayt + lid jalb qilish · UZ · RU",
+    c4_desc:"Yetakchi toshkent qurilish kompaniyasining onlayn-mavjudligi yo'q edi. Loyihalar galereyasi, xizmatlar katalogi, mijozlar portali va CRM integratsiyali lid to'plash tizimi bilan ikki tilli korporativ sayt yaratdik.",
+    c4_r1:"↑ 3× aloqa shakli yuborishlari", c4_r2:"↑ 85% lid sifatining yaxshilanishi",
+    c5_label:"Ta'lim · Namangan, O'zbekiston", c5_title:"Namangan IT Academy", c5_sub:"Ta'lim platformasi + avtomatlashtirilgan qabul · UZ · RU · EN",
+    c5_desc:"IT o'quv markazi barcha yozilishlarni Telegram DM orqali qo'lda boshqarardi. Kurslar katalogi, onlayn yozilish, talabalar portali va Telegram dars eslatmalari bilan uch tilli platforma yaratdik.",
+    c5_r1:"↑ 2× talabalar qabuli", c5_r2:"To'liq avtomatlashtirilgan qabul", c5_r3:"0 soat qo'lda ish",
+    badge_hvac:"HVAC", badge_ecom:"ELEKTRON TIJORAT", badge_hotel:"MEHMONXONA", badge_construction:"QURILISH", badge_education:"TA'LIM",
+    stat_traffic:"Organik trafik", stat_leads:"Telefon lidlari", stat_revenue:"Onlayn daromad", stat_langs:"Faol tillar",
+    stat_bookings:"To'g'ridan-to'g'ri bronlar", stat_automated:"So'rovlar avtomatlashtirildi", stat_forms:"Forma yuborishlari",
+    stat_quality:"Lid sifati", stat_enrollments:"Qabul", stat_manual:"Qo'lda ish",
+    cta_h:"Biznesingiz keyingi keis-stadiya bo'lishi mumkin",
+    cta_p:"Bepul 30 daqiqalik auditga yozing. Raqamli mavjudligingizni nima ushlab turganini aniqlaymiz.",
+    cta_btn:"Bepul audit buyurtma qilish →", footer_rights:"Barcha huquqlar himoyalangan."
+  }
+};
+let lang='en';
+function setLang(l){lang=l;const t=T[l];['en','ru','uz'].forEach(x=>document.getElementById('btn-'+x).classList.toggle('active',x===l));document.documentElement.lang=l;document.querySelectorAll('[data-i18n]').forEach(el=>{const k=el.getAttribute('data-i18n');if(t[k]!==undefined)el.innerHTML=t[k];});try{localStorage.setItem('bl',l);}catch(e){}}
+function toggleMobile(){document.getElementById('mobile-nav').classList.toggle('open');}
+try{const s=localStorage.getItem('bl');if(s&&T[s])setLang(s);}catch(e){}
+</script>
+</body>
+</html>

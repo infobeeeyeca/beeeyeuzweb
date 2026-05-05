@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Services — BeeEye.Uz</title>
+  <meta name="description" content="Web design, e-commerce, SEO, AI integration and digital marketing for Uzbekistan businesses. Trilingual: UZ · RU · EN.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --black: #0a0a0a; --white: #ffffff; --off: #f7f7f5;
+      --amber: #f5a623; --amber-d: #e0941a;
+      --muted: #6b7280; --border: #e5e5e5;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', -apple-system, sans-serif; background: var(--white); color: var(--black); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+
+    .lang-bar { background: var(--black); padding: 0.45rem 2rem; display: flex; justify-content: space-between; align-items: center; }
+    .lang-bar-left { font-size: 12px; color: #555; letter-spacing: 0.04em; }
+    .lang-bar-left span { color: var(--amber); }
+    .lang-switcher { display: flex; gap: 0.25rem; }
+    .lang-btn { background: transparent; border: 1px solid #333; color: #666; padding: 0.2rem 0.6rem; border-radius: 3px; font-size: 11px; font-weight: 600; letter-spacing: 0.06em; cursor: pointer; font-family: inherit; transition: all 0.15s; }
+    .lang-btn:hover { border-color: var(--amber); color: var(--amber); }
+    .lang-btn.active { background: var(--amber); border-color: var(--amber); color: var(--black); }
+
+    nav { position: sticky; top: 0; z-index: 999; background: var(--white); border-bottom: 1px solid var(--border); }
+    .nav-inner { max-width: 1200px; margin: 0 auto; padding: 0 2rem; height: 64px; display: flex; align-items: center; justify-content: space-between; }
+    .nav-logo { display: flex; flex-direction: column; text-decoration: none; }
+    .nav-logo-name { font-size: 18px; font-weight: 800; color: var(--black); letter-spacing: -0.03em; line-height: 1; }
+    .nav-logo-name em { color: var(--amber); font-style: normal; }
+    .nav-logo-tagline { font-size: 9px; color: var(--muted); letter-spacing: 0.12em; text-transform: uppercase; margin-top: 2px; }
+    .nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
+    .nav-links a { text-decoration: none; font-size: 13px; font-weight: 500; color: var(--muted); transition: color 0.15s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--black); font-weight: 600; }
+    .btn-nav { background: var(--black); color: var(--white); padding: 0.55rem 1.25rem; border-radius: 6px; font-size: 13px; font-weight: 600; text-decoration: none; transition: background 0.15s; }
+    .btn-nav:hover { background: #222; }
+    .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; }
+    .hamburger span { width: 22px; height: 2px; background: var(--black); display: block; }
+    .mobile-nav { display: none; background: var(--white); border-bottom: 1px solid var(--border); padding: 1rem 2rem 1.5rem; }
+    .mobile-nav.open { display: block; }
+    .mobile-nav a { display: block; padding: 0.6rem 0; font-size: 15px; font-weight: 500; color: var(--black); text-decoration: none; border-bottom: 1px solid var(--border); }
+    .mobile-nav a:last-child { border-bottom: none; }
+    .mobile-nav .btn-nav { display: block; text-align: center; margin-top: 1rem; }
+
+    .page-header { padding: 4rem 2rem 3.5rem; border-bottom: 1px solid var(--border); }
+    .page-header-inner { max-width: 1200px; margin: 0 auto; }
+    .breadcrumb { font-size: 12px; color: var(--muted); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem; }
+    .breadcrumb a { color: var(--muted); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--black); }
+    .breadcrumb span { color: var(--border); }
+    .page-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 1rem; }
+    .page-header h1 { font-size: clamp(32px, 5vw, 56px); font-weight: 800; letter-spacing: -0.03em; line-height: 1.1; max-width: 760px; margin-bottom: 1rem; }
+    .page-header p { font-size: 17px; color: var(--muted); max-width: 560px; line-height: 1.75; }
+
+    .section { padding: 5rem 2rem; }
+    .section-inner { max-width: 1200px; margin: 0 auto; }
+    .section-alt { background: var(--off); }
+    .divider { height: 1px; background: var(--border); }
+
+    .section-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--amber); margin-bottom: 1.25rem; }
+    .section-h { font-size: clamp(22px, 3vw, 34px); font-weight: 800; letter-spacing: -0.025em; line-height: 1.15; margin-bottom: 0.75rem; }
+    .section-sub { font-size: 15px; color: var(--muted); line-height: 1.75; max-width: 560px; margin-bottom: 3rem; }
+
+    /* Service Detail */
+    .svc-detail { display: grid; grid-template-columns: 1fr; gap: 4rem; margin-bottom: 5rem; padding-bottom: 5rem; border-bottom: 1px solid var(--border); }
+    .svc-detail:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+    .svc-meta { font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--amber); margin-bottom: 1rem; }
+    .svc-detail h2 { font-size: clamp(24px, 3.5vw, 38px); font-weight: 800; letter-spacing: -0.025em; line-height: 1.15; margin-bottom: 0.75rem; }
+    .svc-tagline { font-size: 14px; color: var(--muted); font-weight: 500; margin-bottom: 1.5rem; }
+    .svc-body p { font-size: 15px; color: var(--muted); line-height: 1.8; margin-bottom: 1rem; }
+    .svc-body p strong { color: var(--black); }
+    .svc-body p:last-child { margin-bottom: 0; }
+    .svc-feature-list { list-style: none; display: grid; grid-template-columns: 1fr; gap: 0.75rem; margin: 2rem 0; }
+    .svc-feature-list li { display: flex; align-items: flex-start; gap: 0.75rem; font-size: 14px; color: var(--black); }
+    .svc-feature-list li .check { color: var(--amber); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .tag-list { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-top: 1.5rem; }
+    .tag { font-size: 11px; font-weight: 600; padding: 0.2rem 0.6rem; border-radius: 3px; border: 1px solid var(--border); color: var(--muted); background: var(--off); letter-spacing: 0.02em; }
+
+    .svc-panel { background: var(--off); border: 1px solid var(--border); border-radius: 10px; padding: 2rem; }
+    .svc-panel-title { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 1.25rem; }
+    .svc-kv { display: flex; justify-content: space-between; align-items: baseline; padding: 0.75rem 0; border-bottom: 1px solid var(--border); }
+    .svc-kv:last-child { border-bottom: none; }
+    .svc-kv-label { font-size: 13px; color: var(--muted); }
+    .svc-kv-value { font-size: 14px; font-weight: 700; color: var(--black); text-align: right; }
+    .svc-kv-value.amber { color: var(--amber-d); }
+
+    .btn-primary { background: var(--black); color: var(--white); padding: 0.85rem 1.75rem; border-radius: 6px; font-size: 14px; font-weight: 600; text-decoration: none; transition: background 0.15s; display: inline-block; margin-top: 1.5rem; }
+    .btn-primary:hover { background: #222; }
+    .btn-amber { background: var(--amber); color: var(--black); padding: 0.85rem 1.75rem; border-radius: 6px; font-size: 14px; font-weight: 700; text-decoration: none; transition: background 0.15s; display: inline-block; margin-top: 1.5rem; }
+    .btn-amber:hover { background: var(--amber-d); }
+
+    /* FAQ */
+    .faq-list { display: flex; flex-direction: column; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
+    .faq-item { border-bottom: 1px solid var(--border); }
+    .faq-item:last-child { border-bottom: none; }
+    .faq-q { padding: 1.25rem 1.5rem; font-size: 15px; font-weight: 600; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 1rem; background: var(--white); transition: background 0.15s; letter-spacing: -0.01em; }
+    .faq-q:hover { background: var(--off); }
+    .faq-icon { font-size: 18px; color: var(--amber); flex-shrink: 0; transition: transform 0.2s; font-weight: 400; line-height: 1; }
+    .faq-a { padding: 0 1.5rem 1.25rem; font-size: 14px; color: var(--muted); line-height: 1.75; display: none; background: var(--white); }
+    .faq-item.open .faq-a { display: block; }
+    .faq-item.open .faq-icon { transform: rotate(45deg); }
+
+    /* CTA band */
+    .cta-band { background: var(--black); padding: 5rem 2rem; }
+    .cta-band-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr; gap: 2.5rem; align-items: center; }
+    .cta-band h2 { font-size: clamp(26px, 3.5vw, 40px); font-weight: 800; letter-spacing: -0.025em; line-height: 1.15; color: var(--white); }
+    .cta-band p { font-size: 15px; color: #666; line-height: 1.75; margin-top: 0.75rem; }
+
+    footer { background: var(--black); border-top: 1px solid #1a1a1a; padding: 2rem; text-align: center; }
+    .footer-bottom { max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 0.4rem; }
+    .footer-bottom p { font-size: 12px; color: #333; }
+    .footer-bottom a { color: #444; text-decoration: none; }
+    .footer-bottom a:hover { color: var(--amber); }
+
+    @media (max-width: 767px) {
+      .nav-links { display: none; } .hamburger { display: flex; }
+      .section { padding: 3.5rem 1.5rem; } .page-header { padding: 3rem 1.5rem 2.5rem; }
+      .lang-bar { padding: 0.45rem 1.5rem; }
+    }
+    @media (min-width: 768px) {
+      .svc-detail { grid-template-columns: 1fr 340px; align-items: start; }
+      .svc-feature-list { grid-template-columns: repeat(2, 1fr); }
+      .cta-band-inner { grid-template-columns: 1fr auto; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="lang-bar">
+  <span class="lang-bar-left"><span data-i18n="lang_tagline">🐝 Tez · Ishonchli · O'zbekiston uchun</span></span>
+  <div class="lang-switcher">
+    <button class="lang-btn" onclick="setLang('en')" id="btn-en">EN</button>
+    <button class="lang-btn" onclick="setLang('ru')" id="btn-ru">RU</button>
+    <button class="lang-btn active" onclick="setLang('uz')" id="btn-uz">UZ</button>
+  </div>
+</div>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo" style="flex-direction:row;align-items:center;gap:0.6rem;">
+      <svg width="26" height="30" viewBox="0 0 28 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <polygon points="14,1 27,8.5 27,23.5 14,31 1,23.5 1,8.5" fill="#0a0a0a"/>
+        <circle cx="14" cy="16" r="5" fill="#f5a623"/>
+      </svg>
+      <div>
+        <span class="nav-logo-name">Bee<em>Eye</em>.Uz</span>
+        <span class="nav-logo-tagline" data-i18n="nav_tagline">Intelligent Systems</span>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="services.html" class="active" data-i18n="nav_services">Our Services</a></li>
+      <li><a href="index.html#how" data-i18n="nav_how">How We Work</a></li>
+      <li><a href="portfolio.html" data-i18n="nav_portfolio">Results</a></li>
+      <li><a href="contact.html" data-i18n="nav_contact_lnk">Contact</a></li>
+      <li><a href="contact.html" class="btn-nav" data-i18n="nav_cta">Book an Audit</a></li>
+    </ul>
+    <button class="hamburger" onclick="toggleMobile()"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mobile-nav" id="mobile-nav">
+  <a href="services.html" class="active" onclick="toggleMobile()" data-i18n="nav_services">Our Services</a>
+  <a href="index.html#how" onclick="toggleMobile()" data-i18n="nav_how">How We Work</a>
+  <a href="portfolio.html" data-i18n="nav_portfolio">Results</a>
+  <a href="contact.html" data-i18n="nav_contact_lnk">Contact</a>
+  <a href="contact.html" class="btn-nav" data-i18n="nav_cta">Book an Audit</a>
+</div>
+
+<div class="page-header">
+  <div class="page-header-inner">
+    <div class="breadcrumb">
+      <a href="index.html" data-i18n="nav_home">Home</a>
+      <span>/</span>
+      <span data-i18n="page_bc">Services</span>
+    </div>
+    <div class="page-eyebrow" data-i18n="page_eyebrow">02 / Core Services</div>
+    <h1 data-i18n="page_h1">Everything your business needs to dominate online</h1>
+    <p data-i18n="page_sub">Purpose-built digital systems for the Uzbekistan market. No templates, no guesswork — only what actually drives growth.</p>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<section class="section">
+  <div class="section-inner">
+
+    <!-- 01 Web Design -->
+    <div class="svc-detail" id="web">
+      <div class="svc-body">
+        <div class="svc-meta" data-i18n="sv1_meta">01 / Website Design & Development</div>
+        <h2 data-i18n="sv1_h">High-Converting Websites — Custom-Built</h2>
+        <div class="svc-tagline" data-i18n="sv1_tag">No page builders. No templates. Clean, professional code from scratch.</div>
+        <p data-i18n="sv1_p1">We engineer websites that convert visitors into customers. <strong>Every element is intentional</strong> — the layout, the copy hierarchy, the call-to-action placement, the mobile experience. Nothing is left to chance.</p>
+        <p data-i18n="sv1_p2">All sites load in under 2 seconds, pass Google Core Web Vitals, and come with a content management system so your team can make updates without touching code.</p>
+        <ul class="svc-feature-list">
+          <li><span class="check">✓</span><span data-i18n="sv1_f1">Custom design — no templates</span></li>
+          <li><span class="check">✓</span><span data-i18n="sv1_f2">Mobile-first development</span></li>
+          <li><span class="check">✓</span><span data-i18n="sv1_f3">Trilingual: UZ · RU · EN</span></li>
+          <li><span class="check">✓</span><span data-i18n="sv1_f4">CMS for self-editing</span></li>
+          <li><span class="check">✓</span><span data-i18n="sv1_f5">SSL + hosting setup</span></li>
+          <li><span class="check">✓</span><span data-i18n="sv1_f6">Google Analytics integration</span></li>
+          <li><span class="check">✓</span><span data-i18n="sv1_f7">Core Web Vitals optimised</span></li>
+          <li><span class="check">✓</span><span data-i18n="sv1_f8">30 days free post-launch support</span></li>
+        </ul>
+        <div class="tag-list">
+          <span class="tag">HTML / CSS / JS</span><span class="tag">React</span><span class="tag">WordPress</span><span class="tag">Webflow</span><span class="tag">UX/UI</span>
+        </div>
+        <a href="contact.html" class="btn-amber" data-i18n="btn_quote">Get a Quote →</a>
+      </div>
+      <div>
+        <div class="svc-panel">
+          <div class="svc-panel-title" data-i18n="panel_at_glance">At a glance</div>
+          <div class="svc-kv"><span class="svc-kv-label" data-i18n="kv_delivery">Delivery</span><span class="svc-kv-value" data-i18n="kv1_del">10 – 14 days</span></div>
+          <div class="svc-kv"><span class="svc-kv-label" data-i18n="kv_from">Starting from</span><span class="svc-kv-value amber">$499</span></div>
+          <div class="svc-kv"><span class="svc-kv-label" data-i18n="kv_pages">Pages</span><span class="svc-kv-value" data-i18n="kv1_pages">5 – 20+</span></div>
+          <div class="svc-kv"><span class="svc-kv-label" data-i18n="kv_revisions">Revisions</span><span class="svc-kv-value" data-i18n="kv_unlimited">Unlimited</span></div>
+          <div class="svc-kv"><span class="svc-kv-label" data-i18n="kv_langs">Languages</span><span class="svc-kv-value">UZ · RU · EN</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 02 E-Commerce -->
+    <div class="svc-detail" id="ecom">
+      <div class="svc-body">
+        <div class="svc-meta" data-i18n="sv2_meta">02 / E-Commerce</div>
+        <h2 data-i18n="sv2_h">Uzbek-Market Online Stores</h2>
+        <div class="svc-tagline" data-i18n="sv2_tag">Payme · Click · Uzum — integrated from day one</div>
+        <p data-i18n="sv2_p1">We build e-commerce stores that are <strong>purpose-built for how Uzbek customers actually shop</strong> — on mobile, paying with Payme or Click, discovering products through Telegram, and expecting content in their language.</p>
+        <p data-i18n="sv2_p2">From a 20-product boutique to a multi-category marketplace, every store includes a full admin dashboard, inventory management, order tracking, and Telegram bot notifications for new orders.</p>
+        <ul class="svc-feature-list">
+          <li><span class="check">✓</span><span data-i18n="sv2_f1">Payme, Click & Uzum Pay</span></li>
+          <li><span class="check">✓</span><span data-i18n="sv2_f2">Trilingual product listings</span></li>
+          <li><span class="check">✓</span><span data-i18n="sv2_f3">Telegram order notifications</span></li>
+          <li><span class="check">✓</span><span data-i18n="sv2_f4">Inventory management</span></li>
+          <li><span class="check">✓</span><span data-i18n="sv2_f5">Discount codes & promotions</span></li>
+          <li><span class="check">✓</span><span data-i18n="sv2_f6">Analytics dashboard</span></li>
+          <li><span class="check">✓</span><span data-i18n="sv2_f7">Mobile-first checkout</span></li>
+          <li><span class="check">✓</span><span data-i18n="sv2_f8">60 days free support</span></li>
+        </ul>
+        <div class="tag-list">
+          <span class="tag">Payme API</span><span class="tag">Click API</span><span class="tag">Uzum</span><span class="tag">WooCommerce</span><span class="tag">Shopify</span>
+        </div>
+        <a href="contact.html" class="btn-amber" data-i18n="btn_quote">Get a Quote →</a>
+      </div>
+      <div>
+        <div class="svc-panel">
+          <div class="svc-panel-title" data-i18n="panel_at_glance">At a glance</div>
+          <div class="svc-kv"><span class="svc-kv-label" data-i18n="kv_delivery">Delivery</span><span class="svc-kv-value" data-i18n="kv2_del">3 – 5 weeks</span></div>
+          <div class="svc-kv"><span class="svc-kv-label" data-i18n="kv_from">Starting from</span><span class="svc-kv-value amber">$2,499</span></div>
+          <div class="svc-kv"><span class="svc-kv-label" data-i18n="kv_products">Products</span><span class="svc-kv-value" data-i18n="kv_unlimited">Unlimited</span></div>
+          <div class="svc-kv"><span class="svc-kv-label" data-i18n="kv_payments">Payments</span><span class="svc-kv-value">Payme · Click · Uzum</span></div>
+          <div class="svc-kv"><span class="svc-kv-label" data-i18n="kv_langs">Languages</span><span class="svc-kv-value">UZ · RU · EN</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 03 SEO -->
+    <div class="svc-detail" id="seo">
+      <div class="svc-body">
+        <div class="svc-meta" data-i18n="sv3_meta">03 / SEO & Search Visibility</div>
+        <h2 data-i18n="sv3_h">Google.uz + Yandex — Rank Where It Matters</h2>
+        <div class="svc-tagline" data-i18n="sv3_tag">Trilingual keyword strategy for the Uzbek search landscape</div>
+        <p data-i18n="sv3_p1">SEO in Uzbekistan requires a fundamentally different strategy from Western markets. <strong>Yandex remains dominant for Russian-language queries.</strong> Google.uz is growing fast for Uzbek-language content. And English SEO opens doors to international clients and expats.</p>
+        <p data-i18n="sv3_p2">We operate across all three search environments simultaneously — technical SEO, content, and local citations — delivering compounding organic growth without black-hat risk.</p>
+        <ul class="svc-feature-list">
+          <li><span class="check">✓</span><span data-i18n="sv3_f1">UZ + RU + EN keyword research</span></li>
+          <li><span class="check">✓</span><span data-i18n="sv3_f2">Google.uz & Yandex optimisation</span></li>
+          <li><span class="check">✓</span><span data-i18n="sv3_f3">2GIS & Google Maps listing</span></li>
+          <li><span class="check">✓</span><span data-i18n="sv3_f4">Technical SEO audit & fixes</span></li>
+          <li><span class="check">✓</span><span data-i18n="sv3_f5">Content strategy & copywriting</span></li>
+          <li><span class="check">✓</span><span data-i18n="sv3_f6">Monthly ranking reports</span></li>
+        </ul>
+        <div class="tag-list">
+          <span class="tag">Google Search Console</span><span class="tag">Yandex.Metrica</span><span class="tag">SEMrush</span><span class="tag">Ahrefs</span><span class="tag">2GIS</span>
+        </div>
+        <a href="contact.html" class="btn-amber" data-i18n="btn_quote">Get a Quote →</a>
+      </div>
+      <div>
+        <div class="svc-panel">
+          <div class="svc-panel-title" data-i18n="panel_at_glance">At a glance</div>
+          <div class="svc-kv"><span class="svc-kv-label" data-i18n="kv_results">Results visible</span><span class="svc-kv-value" data-i18n="kv3_res">2 – 4 months</span></div>
+          <div class="svc-kv"><span class="svc-kv-label" data-i18n="kv_from">Starting from</span><span class="svc-kv-value amber">$299/mo</span></div>
+          <div class="svc-kv"><span class="svc-kv-label" data-i18n="kv_avg_gain">Avg. traffic gain</span><span class="svc-kv-value">+65%</span></div>
+          <div class="svc-kv"><span class="svc-kv-label" data-i18n="kv_search">Search engines</span><span class="svc-kv-value">Google · Yandex</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 04 AI -->
+    <div class="svc-detail" id="ai">
+      <div class="svc-body">
+        <div class="svc-meta" data-i18n="sv4_meta">04 / AI & Process Automation</div>
+        <h2 data-i18n="sv4_h">24/7 Customer Engagement — Automated</h2>
+        <div class="svc-tagline" data-i18n="sv4_tag">Multilingual AI that handles 70% of inquiries without human intervention</div>
+        <p data-i18n="sv4_p1">Your customers ask the same questions hundreds of times. <strong>Our AI systems answer them instantly</strong> — in Uzbek, Russian, or English, 24 hours a day, 7 days a week, without salary or sick days.</p>
+        <p data-i18n="sv4_p2">From a Telegram bot that qualifies leads and books appointments, to a website chatbot that guides customers to the right product — we automate the repetitive work so your team focuses on high-value interactions.</p>
+        <ul class="svc-feature-list">
+          <li><span class="check">✓</span><span data-i18n="sv4_f1">Multilingual AI chatbot (UZ/RU/EN)</span></li>
+          <li><span class="check">✓</span><span data-i18n="sv4_f2">Telegram bot (lead capture & booking)</span></li>
+          <li><span class="check">✓</span><span data-i18n="sv4_f3">Automated FAQ responses</span></li>
+          <li><span class="check">✓</span><span data-i18n="sv4_f4">AI product recommendations</span></li>
+          <li><span class="check">✓</span><span data-i18n="sv4_f5">Lead qualification & routing</span></li>
+          <li><span class="check">✓</span><span data-i18n="sv4_f6">CRM integration</span></li>
+        </ul>
+        <div class="tag-list">
+          <span class="tag">OpenAI</span><span class="tag">Claude AI</span><span class="tag">Telegram API</span><span class="tag">n8n</span><span class="tag">Dialogflow</span>
+        </div>
+        <a href="contact.html" class="btn-amber" data-i18n="btn_quote">Get a Quote →</a>
+      </div>
+      <div>
+        <div class="svc-panel">
+          <div class="svc-panel-title" data-i18n="panel_at_glance">At a glance</div>
+          <div class="svc-kv"><span class="svc-kv-label" data-i18n="kv_automates">Automates</span><span class="svc-kv-value" data-i18n="kv4_auto">Up to 70% of inquiries</span></div>
+          <div class="svc-kv"><span class="svc-kv-label" data-i18n="kv_response">Response time</span><span class="svc-kv-value" data-i18n="kv4_resp">Instant · 24/7</span></div>
+          <div class="svc-kv"><span class="svc-kv-label" data-i18n="kv_langs">Languages</span><span class="svc-kv-value">UZ · RU · EN</span></div>
+          <div class="svc-kv"><span class="svc-kv-label" data-i18n="kv_from">Starting from</span><span class="svc-kv-value amber">$349</span></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- FAQ -->
+<section class="section section-alt" id="faq">
+  <div class="section-inner">
+    <div class="section-eyebrow" data-i18n="faq_eyebrow">Common Questions</div>
+    <h2 class="section-h" data-i18n="faq_h">Frequently asked questions</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+          <span data-i18n="faq1_q">How long does a website take?</span><span class="faq-icon">+</span>
+        </div>
+        <div class="faq-a" data-i18n="faq1_a">Standard 5–10 page business sites: 10–14 days. E-commerce stores: 3–5 weeks. Complex custom applications: we scope it properly in your free consultation. We never give a timeline we can't commit to.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+          <span data-i18n="faq2_q">Do you work with businesses outside Tashkent?</span><span class="faq-icon">+</span>
+        </div>
+        <div class="faq-a" data-i18n="faq2_a">Yes — we work with businesses across all of Uzbekistan (Samarkand, Bukhara, Namangan, Andijan, Fergana) and internationally. Everything runs remotely via Telegram, email, and video calls. Location is irrelevant to output quality.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+          <span data-i18n="faq3_q">Will I be able to update my own website?</span><span class="faq-icon">+</span>
+        </div>
+        <div class="faq-a" data-i18n="faq3_a">Yes. Every website includes a CMS so you can update content, images, prices, and pages without touching code. We include a hands-on training session after launch so your team is fully independent from day one.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+          <span data-i18n="faq4_q">How do payments work? Do you accept Uzbek methods?</span><span class="faq-icon">+</span>
+        </div>
+        <div class="faq-a" data-i18n="faq4_a">We accept Payme, Click, Uzbek bank transfers, international credit cards, and PayPal. Standard terms: 50% deposit to begin, balance on delivery. Fixed pricing — you'll never receive an invoice that surprises you.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+          <span data-i18n="faq5_q">What's included in the free website audit?</span><span class="faq-icon">+</span>
+        </div>
+        <div class="faq-a" data-i18n="faq5_a">A 30-minute structured session covering: page speed analysis, SEO health score, mobile usability, conversion blockers, competitor comparison, and a prioritised action plan. Delivered in Uzbek, Russian, or English. No sales pressure.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+          <span data-i18n="faq6_q">Do you offer ongoing support after launch?</span><span class="faq-icon">+</span>
+        </div>
+        <div class="faq-a" data-i18n="faq6_a">All projects include 30 days (or 60 days for e-commerce) of free support. After that, monthly maintenance plans start at $49/month covering hosting, security updates, backups, and minor content changes.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Band -->
+<div class="cta-band">
+  <div class="cta-band-inner">
+    <div>
+      <h2 data-i18n="cta_h">Not sure which service fits your situation?</h2>
+      <p data-i18n="cta_p">Book a free 30-minute audit. We'll assess your current digital presence and recommend exactly what you need — no more, no less.</p>
+    </div>
+    <a href="contact.html" class="btn-amber" style="white-space:nowrap;flex-shrink:0;" data-i18n="cta_btn">Book Free Audit →</a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-bottom">
+    <p>&copy; 2025 <a href="index.html">BeeEye.Uz</a> — <span data-i18n="footer_rights">All rights reserved.</span></p>
+    <p><a href="mailto:info@beeeye.uz">info@beeeye.uz</a> · <a href="https://t.me/beeeye_ca">Telegram: @beeeye_ca</a></p>
+  </div>
+</footer>
+
+<script>
+const T = {
+  en: {
+    lang_tagline:"🐝 Fast · Reliable · Built for Uzbekistan", nav_tagline:"Intelligent Systems",
+    nav_services:"Our Services", nav_how:"How We Work", nav_portfolio:"Results", nav_contact_lnk:"Contact", nav_cta:"Book an Audit", nav_home:"Home",
+    page_bc:"Services", page_eyebrow:"02 / Core Services",
+    page_h1:"Everything your business needs to dominate online",
+    page_sub:"Purpose-built digital systems for the Uzbekistan market. No templates, no guesswork — only what actually drives growth.",
+    sv1_meta:"01 / Website Design & Development", sv1_h:"High-Converting Websites — Custom-Built",
+    sv1_tag:"No page builders. No templates. Clean, professional code from scratch.",
+    sv1_p1:"We engineer websites that convert visitors into customers. <strong>Every element is intentional</strong> — the layout, the copy hierarchy, the call-to-action placement, the mobile experience.",
+    sv1_p2:"All sites load in under 2 seconds, pass Google Core Web Vitals, and come with a CMS so your team can make updates without touching code.",
+    sv1_f1:"Custom design — no templates", sv1_f2:"Mobile-first development", sv1_f3:"Trilingual: UZ · RU · EN",
+    sv1_f4:"CMS for self-editing", sv1_f5:"SSL + hosting setup", sv1_f6:"Google Analytics integration",
+    sv1_f7:"Core Web Vitals optimised", sv1_f8:"30 days free post-launch support",
+    sv2_meta:"02 / E-Commerce", sv2_h:"Uzbek-Market Online Stores",
+    sv2_tag:"Payme · Click · Uzum — integrated from day one",
+    sv2_p1:"We build e-commerce stores purpose-built for how Uzbek customers actually shop — on mobile, paying with Payme or Click, discovering products through Telegram, expecting content in their language.",
+    sv2_p2:"Every store includes a full admin dashboard, inventory management, order tracking, and Telegram bot notifications for new orders.",
+    sv2_f1:"Payme, Click & Uzum Pay", sv2_f2:"Trilingual product listings", sv2_f3:"Telegram order notifications",
+    sv2_f4:"Inventory management", sv2_f5:"Discount codes & promotions", sv2_f6:"Analytics dashboard",
+    sv2_f7:"Mobile-first checkout", sv2_f8:"60 days free support",
+    sv3_meta:"03 / SEO & Search Visibility", sv3_h:"Google.uz + Yandex — Rank Where It Matters",
+    sv3_tag:"Trilingual keyword strategy for the Uzbek search landscape",
+    sv3_p1:"SEO in Uzbekistan requires a different strategy. <strong>Yandex remains dominant for Russian-language queries.</strong> Google.uz is growing fast for Uzbek content. English SEO opens doors to international clients.",
+    sv3_p2:"We operate across all three search environments simultaneously — technical SEO, content, and local citations — delivering compounding organic growth.",
+    sv3_f1:"UZ + RU + EN keyword research", sv3_f2:"Google.uz & Yandex optimisation",
+    sv3_f3:"2GIS & Google Maps listing", sv3_f4:"Technical SEO audit & fixes",
+    sv3_f5:"Content strategy & copywriting", sv3_f6:"Monthly ranking reports",
+    sv4_meta:"04 / AI & Process Automation", sv4_h:"24/7 Customer Engagement — Automated",
+    sv4_tag:"Multilingual AI that handles 70% of inquiries without human intervention",
+    sv4_p1:"Your customers ask the same questions hundreds of times. <strong>Our AI systems answer them instantly</strong> — in Uzbek, Russian, or English, 24/7, without salary or sick days.",
+    sv4_p2:"From a Telegram bot that qualifies leads and books appointments, to a chatbot that guides customers to the right product — we automate repetitive work.",
+    sv4_f1:"Multilingual AI chatbot (UZ/RU/EN)", sv4_f2:"Telegram bot (lead capture & booking)",
+    sv4_f3:"Automated FAQ responses", sv4_f4:"AI product recommendations",
+    sv4_f5:"Lead qualification & routing", sv4_f6:"CRM integration",
+    panel_at_glance:"At a glance",
+    kv_delivery:"Delivery", kv1_del:"10 – 14 days", kv_from:"Starting from", kv_pages:"Pages", kv1_pages:"5 – 20+",
+    kv_revisions:"Revisions", kv_unlimited:"Unlimited", kv_langs:"Languages",
+    kv2_del:"3 – 5 weeks", kv_products:"Products", kv_payments:"Payments",
+    kv_results:"Results visible", kv3_res:"2 – 4 months", kv_avg_gain:"Avg. traffic gain", kv_search:"Search engines",
+    kv_automates:"Automates", kv4_auto:"Up to 70% of inquiries", kv_response:"Response time", kv4_resp:"Instant · 24/7",
+    btn_quote:"Get a Quote →",
+    faq_eyebrow:"Common Questions", faq_h:"Frequently asked questions",
+    faq1_q:"How long does a website take?",
+    faq1_a:"Standard 5–10 page sites: 10–14 days. E-commerce: 3–5 weeks. Complex applications: scoped in your free consultation. We never give a timeline we can't commit to.",
+    faq2_q:"Do you work with businesses outside Tashkent?",
+    faq2_a:"Yes — we work across all of Uzbekistan and internationally. Everything runs remotely via Telegram, email, and video calls.",
+    faq3_q:"Will I be able to update my own website?",
+    faq3_a:"Yes. Every site includes a CMS for content updates without code. We include a hands-on training session after launch.",
+    faq4_q:"How do payments work? Do you accept Uzbek methods?",
+    faq4_a:"We accept Payme, Click, Uzbek bank transfers, international credit cards, and PayPal. 50% deposit to begin, balance on delivery. Fixed pricing — no surprise invoices.",
+    faq5_q:"What's included in the free website audit?",
+    faq5_a:"A 30-minute session: page speed, SEO health, mobile usability, conversion blockers, competitor comparison, and a prioritised action plan. No sales pressure.",
+    faq6_q:"Do you offer ongoing support after launch?",
+    faq6_a:"30 days free support included (60 days for e-commerce). Monthly plans from $49/month after that.",
+    cta_h:"Not sure which service fits your situation?",
+    cta_p:"Book a free 30-minute audit. We'll assess your digital presence and recommend exactly what you need.",
+    cta_btn:"Book Free Audit →", footer_rights:"All rights reserved."
+  },
+  ru: {
+    lang_tagline:"🐝 Быстро · Надёжно · Для Узбекистана", nav_tagline:"Интеллектуальные системы",
+    nav_services:"Наши услуги", nav_how:"Как мы работаем", nav_portfolio:"Результаты", nav_contact_lnk:"Контакты", nav_cta:"Записаться на аудит", nav_home:"Главная",
+    page_bc:"Услуги", page_eyebrow:"02 / Основные услуги",
+    page_h1:"Всё необходимое для доминирования вашего бизнеса онлайн",
+    page_sub:"Цифровые системы, созданные для рынка Узбекистана. Без шаблонов, без угадываний — только то, что реально даёт рост.",
+    sv1_meta:"01 / Разработка и дизайн сайтов", sv1_h:"Конверсионные сайты — разработанные индивидуально",
+    sv1_tag:"Без конструкторов. Без шаблонов. Чистый профессиональный код с нуля.",
+    sv1_p1:"Мы разрабатываем сайты, которые превращают посетителей в клиентов. <strong>Каждый элемент продуман</strong> — макет, иерархия текста, расположение CTA, мобильный опыт.",
+    sv1_p2:"Все сайты загружаются менее чем за 2 секунды, проходят Core Web Vitals Google и поставляются с CMS для обновлений без программирования.",
+    sv1_f1:"Индивидуальный дизайн — без шаблонов", sv1_f2:"Разработка с мобильным приоритетом", sv1_f3:"Трёхъязычный: UZ · RU · EN",
+    sv1_f4:"CMS для самостоятельного редактирования", sv1_f5:"SSL + настройка хостинга", sv1_f6:"Интеграция Google Analytics",
+    sv1_f7:"Оптимизация Core Web Vitals", sv1_f8:"30 дней бесплатной поддержки после запуска",
+    sv2_meta:"02 / E-Commerce", sv2_h:"Интернет-магазины для рынка УЗ",
+    sv2_tag:"Payme · Click · Uzum — интегрированы с первого дня",
+    sv2_p1:"Мы создаём магазины, специально разработанные для того, как узбекские клиенты реально покупают — с мобильных, оплачивая через Payme или Click, находя товары в Telegram, ожидая контент на своём языке.",
+    sv2_p2:"Каждый магазин включает полную панель администратора, управление складом, отслеживание заказов и Telegram-уведомления о новых заказах.",
+    sv2_f1:"Payme, Click и Uzum Pay", sv2_f2:"Трёхъязычные карточки товаров", sv2_f3:"Telegram-уведомления о заказах",
+    sv2_f4:"Управление складом", sv2_f5:"Скидочные коды и акции", sv2_f6:"Панель аналитики",
+    sv2_f7:"Мобильный checkout", sv2_f8:"60 дней бесплатной поддержки",
+    sv3_meta:"03 / SEO и поисковая видимость", sv3_h:"Google.uz + Яндекс — позиции там, где важно",
+    sv3_tag:"Трёхъязычная стратегия ключевых слов для узбекского поискового пространства",
+    sv3_p1:"SEO в Узбекистане требует принципиально иного подхода. <strong>Яндекс остаётся доминирующим для русскоязычных запросов.</strong> Google.uz быстро растёт для узбекоязычного контента.",
+    sv3_p2:"Мы работаем одновременно во всех трёх поисковых средах — технический SEO, контент и локальные цитирования — обеспечивая устойчивый органический рост.",
+    sv3_f1:"Подбор ключевых слов UZ + RU + EN", sv3_f2:"Оптимизация Google.uz и Яндекса",
+    sv3_f3:"2GIS и Google Maps", sv3_f4:"Технический SEO-аудит и исправления",
+    sv3_f5:"Контент-стратегия и копирайтинг", sv3_f6:"Ежемесячные отчёты по позициям",
+    sv4_meta:"04 / ИИ и автоматизация", sv4_h:"Взаимодействие с клиентами 24/7 — автоматически",
+    sv4_tag:"Многоязычный ИИ, обрабатывающий 70% запросов без участия человека",
+    sv4_p1:"Ваши клиенты задают одни и те же вопросы сотни раз. <strong>Наши ИИ-системы отвечают мгновенно</strong> — на узбекском, русском или английском, 24/7, без зарплаты и больничных.",
+    sv4_p2:"От Telegram-бота, квалифицирующего лидов и записывающего на приём, до чат-бота на сайте — мы автоматизируем рутинную работу.",
+    sv4_f1:"Многоязычный ИИ-чат-бот (UZ/RU/EN)", sv4_f2:"Telegram-бот (захват лидов и запись)",
+    sv4_f3:"Автоответы на FAQ", sv4_f4:"ИИ-рекомендации товаров",
+    sv4_f5:"Квалификация и маршрутизация лидов", sv4_f6:"Интеграция с CRM",
+    panel_at_glance:"Кратко",
+    kv_delivery:"Срок", kv1_del:"10 – 14 дней", kv_from:"От", kv_pages:"Страниц", kv1_pages:"5 – 20+",
+    kv_revisions:"Правки", kv_unlimited:"Без ограничений", kv_langs:"Языки",
+    kv2_del:"3 – 5 недель", kv_products:"Товаров", kv_payments:"Оплата",
+    kv_results:"Первые результаты", kv3_res:"2 – 4 месяца", kv_avg_gain:"Ср. рост трафика", kv_search:"Поисковики",
+    kv_automates:"Автоматизирует", kv4_auto:"До 70% запросов", kv_response:"Время ответа", kv4_resp:"Мгновенно · 24/7",
+    btn_quote:"Получить предложение →",
+    faq_eyebrow:"Часто задаваемые вопросы", faq_h:"Ответы на популярные вопросы",
+    faq1_q:"Сколько времени занимает создание сайта?",
+    faq1_a:"Стандартный сайт 5–10 страниц: 10–14 дней. Интернет-магазин: 3–5 недель. Сложные проекты: обсуждаем на бесплатной консультации.",
+    faq2_q:"Вы работаете с компаниями за пределами Ташкента?",
+    faq2_a:"Да — работаем по всему Узбекистану и за рубежом. Всё удалённо: Telegram, email, видеозвонки.",
+    faq3_q:"Смогу ли я самостоятельно обновлять сайт?",
+    faq3_a:"Да. Каждый сайт включает CMS для обновлений без кода. После запуска проводим обучающую сессию.",
+    faq4_q:"Как проходит оплата? Принимаете узбекские платёжные системы?",
+    faq4_a:"Принимаем Payme, Click, банковские переводы, карты и PayPal. Предоплата 50%, остаток — при сдаче. Фиксированная цена.",
+    faq5_q:"Что входит в бесплатный аудит?",
+    faq5_a:"30 минут: скорость страниц, SEO, мобильность, блокировщики конверсии, конкуренты и приоритизированный план действий.",
+    faq6_q:"Есть ли поддержка после запуска?",
+    faq6_a:"30 дней бесплатно (60 для магазинов). Далее — от $49/месяц.",
+    cta_h:"Не уверены, какая услуга подходит вашей ситуации?",
+    cta_p:"Запишитесь на бесплатный 30-минутный аудит. Оценим ваше цифровое присутствие и порекомендуем ровно то, что нужно.",
+    cta_btn:"Заказать бесплатный аудит →", footer_rights:"Все права защищены."
+  },
+  uz: {
+    lang_tagline:"🐝 Tez · Ishonchli · O'zbekiston uchun", nav_tagline:"Intelligent Systems",
+    nav_services:"Xizmatlarimiz", nav_how:"Qanday ishlaymiz", nav_portfolio:"Natijalar", nav_contact_lnk:"Aloqa", nav_cta:"Audit buyurtma qilish", nav_home:"Bosh sahifa",
+    page_bc:"Xizmatlar", page_eyebrow:"02 / Asosiy xizmatlar",
+    page_h1:"Biznesingizning onlaynda ustun turishi uchun zarur bo'lgan hamma narsa",
+    page_sub:"O'zbekiston bozori uchun maqsadli raqamli tizimlar. Shablonlar yo'q, taxmin yo'q — faqat haqiqiy o'sishni ta'minlaydigan narsa.",
+    sv1_meta:"01 / Veb-sayt dizayni va ishlab chiqish", sv1_h:"Konversiyali veb-saytlar — maxsus qurilgan",
+    sv1_tag:"Konstruktorlar yo'q. Shablonlar yo'q. Noldan toza, professional kod.",
+    sv1_p1:"Tashrif buyuruvchilarni mijozlarga aylantiruvchi veb-saytlar yaratamiz. <strong>Har bir element maqsadli</strong> — maket, matn ierarxiyasi, CTA joylashuvi, mobil tajriba.",
+    sv1_p2:"Barcha saytlar 2 soniyadan kam yuklanadi, Google Core Web Vitals dan o'tadi va jamoangiz kod teginmasdan yangilay oladigan CMS bilan ta'minlangan.",
+    sv1_f1:"Maxsus dizayn — shablonsiz", sv1_f2:"Mobil-birinchi ishlab chiqish", sv1_f3:"Uch tilli: UZ · RU · EN",
+    sv1_f4:"O'z-o'zini tahrirlash uchun CMS", sv1_f5:"SSL + hosting sozlamasi", sv1_f6:"Google Analytics integratsiyasi",
+    sv1_f7:"Core Web Vitals optimallashtirilgan", sv1_f8:"Ishga tushirgandan keyin 30 kun bepul qo'llab-quvvatlash",
+    sv2_meta:"02 / Elektron tijorat", sv2_h:"O'zbek bozori uchun onlayn do'konlar",
+    sv2_tag:"Payme · Click · Uzum — birinchi kundan integratsiya qilingan",
+    sv2_p1:"O'zbek mijozlarning haqiqatda qanday xarid qilishiga moslashtirilgan do'konlar quramiz — mobildan, Payme yoki Click bilan to'lab, Telegram orqali mahsulot topib, o'z tilida kontent kutib.",
+    sv2_p2:"Har bir do'kon to'liq admin panel, ombor boshqaruvi, buyurtmalarni kuzatish va yangi buyurtmalar uchun Telegram bot bildirishnomasini o'z ichiga oladi.",
+    sv2_f1:"Payme, Click va Uzum Pay", sv2_f2:"Uch tilli mahsulot ro'yxatlari", sv2_f3:"Telegram buyurtma bildirg'ichlari",
+    sv2_f4:"Ombor boshqaruvi", sv2_f5:"Chegirma kodlari va aksiyalar", sv2_f6:"Tahlil paneli",
+    sv2_f7:"Mobil-birinchi to'lov jarayoni", sv2_f8:"60 kun bepul qo'llab-quvvatlash",
+    sv3_meta:"03 / SEO va qidiruv ko'rinishliligi", sv3_h:"Google.uz + Yandex — muhim joyda reytingda bo'lish",
+    sv3_tag:"O'zbek qidiruv muhiti uchun uch tilli kalit so'z strategiyasi",
+    sv3_p1:"O'zbekistonda SEO tamoman boshqacha strategiyani talab qiladi. <strong>Yandex rus tilidagi so'rovlarda ustun bo'lib qolmoqda.</strong> Google.uz o'zbek tili kontenti uchun tez o'sib bormoqda.",
+    sv3_p2:"Barcha uch qidiruv muhitida bir vaqtda ishlaymiz — texnik SEO, kontent va lokal tsitirovat — barqaror organik o'sishni ta'minlaymiz.",
+    sv3_f1:"UZ + RU + EN kalit so'zlarni tadqiq qilish", sv3_f2:"Google.uz va Yandex optimizatsiyasi",
+    sv3_f3:"2GIS va Google Maps", sv3_f4:"Texnik SEO audit va tuzatishlar",
+    sv3_f5:"Kontent strategiyasi va matbuot yozish", sv3_f6:"Oylik reytinglar bo'yicha hisobotlar",
+    sv4_meta:"04 / AI va jarayon avtomatizatsiyasi", sv4_h:"24/7 mijoz bilan muloqot — avtomatlashtirilgan",
+    sv4_tag:"Inson aralashuvisiz so'rovlarning 70% ni hal qiluvchi ko'p tilli AI",
+    sv4_p1:"Mijozlaringiz bir xil savollarni yuzlab marta beradi. <strong>Bizning AI tizimlari ularga darhol javob beradi</strong> — o'zbek, rus yoki ingliz tilida, 24/7, maosh va kasallik haqisiz.",
+    sv4_p2:"Lidlarni saralab qabulga yozuvchi Telegram botdan tortib, mijozlarni to'g'ri mahsulotga yo'naltiruvchi chatbotgacha — takroriy ishni avtomatlashtiring.",
+    sv4_f1:"Ko'p tilli AI chatbot (UZ/RU/EN)", sv4_f2:"Telegram bot (lid to'plash va qabul yozish)",
+    sv4_f3:"Avtomatik FAQ javoblari", sv4_f4:"AI mahsulot tavsiyalari",
+    sv4_f5:"Lid saralash va yo'naltirish", sv4_f6:"CRM integratsiyasi",
+    panel_at_glance:"Qisqacha",
+    kv_delivery:"Topshirish", kv1_del:"10 – 14 kun", kv_from:"Boshlanish narxi", kv_pages:"Sahifalar", kv1_pages:"5 – 20+",
+    kv_revisions:"Tuzatishlar", kv_unlimited:"Cheksiz", kv_langs:"Tillar",
+    kv2_del:"3 – 5 hafta", kv_products:"Mahsulotlar", kv_payments:"To'lov",
+    kv_results:"Natijalar ko'rinadi", kv3_res:"2 – 4 oy", kv_avg_gain:"O'rtacha trafik o'sishi", kv_search:"Qidiruv tizimlari",
+    kv_automates:"Avtomatlashtiradi", kv4_auto:"So'rovlarning 70% gacha", kv_response:"Javob vaqti", kv4_resp:"Darhol · 24/7",
+    btn_quote:"Narx olish →",
+    faq_eyebrow:"Keng tarqalgan savollar", faq_h:"Ko'p so'raladigan savollar",
+    faq1_q:"Veb-sayt yaratish qancha vaqt oladi?",
+    faq1_a:"5–10 sahifali standart sayt: 10–14 kun. Elektron tijorat: 3–5 hafta. Murakkab loyihalar: bepul maslahatda aniqlaymiz.",
+    faq2_q:"Toshkentdan tashqarida joylashgan kompaniyalar bilan ishlaysizmi?",
+    faq2_a:"Ha — butun O'zbekiston va xalqaro miqyosda ishlaymiz. Hammasi masofaviy: Telegram, email, video qo'ng'iroqlar.",
+    faq3_q:"Saytni o'zim yangilay olaman?",
+    faq3_a:"Ha. Har bir sayt kodni teginmasdan kontent yangilash uchun CMS bilan ta'minlangan. Ishga tushirgandan keyin treninig sessiyasi o'tkazamiz.",
+    faq4_q:"To'lov qanday ishlaydi? O'zbek to'lov usullarini qabul qilasizmi?",
+    faq4_a:"Payme, Click, o'zbek bank o'tkazmalari, kredit kartalar va PayPal qabul qilinadi. 50% avans, qolgan qismi topshirish paytida. Belgilangan narx.",
+    faq5_q:"Bepul auditga nima kiradi?",
+    faq5_a:"30 daqiqa: sahifa tezligi, SEO, mobil moslashuvchanlik, konversiya to'suvchilari, raqobatchilar va ustuvorlik berilgan harakat rejasi.",
+    faq6_q:"Ishga tushirgandan keyin qo'llab-quvvatlash bormi?",
+    faq6_a:"30 kun bepul (do'konlar uchun 60 kun). Keyin $49/oydan boshlanadigan rejalar.",
+    cta_h:"Qaysi xizmat sizning holatga mos kelishini bilmayapsizmi?",
+    cta_p:"Bepul 30 daqiqalik auditga yozing. Raqamli mavjudligingizni baholaymiz va aynan nima kerakligini tavsiya etamiz.",
+    cta_btn:"Bepul audit buyurtma qilish →", footer_rights:"Barcha huquqlar himoyalangan."
+  }
+};
+
+let lang = 'uz';
+function setLang(l) {
+  lang = l;
+  const t = T[l];
+  ['en','ru','uz'].forEach(x => document.getElementById('btn-'+x).classList.toggle('active', x===l));
+  document.documentElement.lang = l;
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const k = el.getAttribute('data-i18n');
+    if (t[k] !== undefined) el.innerHTML = t[k];
+  });
+  try { localStorage.setItem('bl', l); } catch(e) {}
+}
+function toggleMobile() { document.getElementById('mobile-nav').classList.toggle('open'); }
+try { const s = localStorage.getItem('bl'); setLang(s && T[s] ? s : 'uz'); } catch(e) { setLang('uz'); }
+</script>
+</body>
+</html>
