@@ -1,10 +1,10 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Results — BeeEye.ca</title>
-  <meta name="description" content="Real results from BeeEye.ca client projects — websites, e-commerce and digital systems built for Uzbekistan and international businesses.">
+  <title>Results — BeeEye.Uz</title>
+  <meta name="description" content="Real results from BeeEye.Uz client projects — websites, e-commerce and digital systems built for Uzbekistan and international businesses.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -176,7 +176,7 @@
 <body>
 
 <div class="lang-bar">
-  <span class="lang-bar-left"><span data-i18n="lang_tagline">🍁 Canadian quality · Uzbekistan market</span></span>
+  <span class="lang-bar-left"><span data-i18n="lang_tagline">Ishonchli · Zamonaviy · O'zbekiston uchun</span></span>
   <div class="lang-switcher">
     <button class="lang-btn active" onclick="setLang('en')" id="btn-en">EN</button>
     <button class="lang-btn" onclick="setLang('ru')" id="btn-ru">RU</button>
@@ -186,9 +186,24 @@
 
 <nav>
   <div class="nav-inner">
-    <a href="index.html" class="nav-logo">
-      <span class="nav-logo-name">Bee<em>Eye</em>.ca</span>
-      <span class="nav-logo-tagline" data-i18n="nav_tagline">Intelligent Systems</span>
+    <a href="index.html" class="nav-logo" style="flex-direction:row;align-items:center;gap:0.6rem;">
+      <svg width="28" height="28" viewBox="-5 -5 110 110" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs>
+          <mask id="hm">
+            <rect x="-5" y="-5" width="110" height="110" fill="black"/>
+            <g transform="translate(50,50) scale(0.60) translate(-50,-50)">
+              <polygon points="50,16 79.44,33 79.44,67 50,84 20.56,67 20.56,33" fill="white" stroke="white" stroke-width="80" stroke-linejoin="round"/>
+              <polygon points="50,16 79.44,33 79.44,67 50,84 20.56,67 20.56,33" fill="black" stroke="black" stroke-width="45" stroke-linejoin="round"/>
+            </g>
+          </mask>
+        </defs>
+        <rect x="-5" y="-5" width="110" height="110" fill="#0a0a0a" mask="url(#hm)"/>
+        <circle cx="50" cy="50" r="11" fill="#f5a623"/>
+      </svg>
+      <div>
+        <span class="nav-logo-name">Bee<em>Eye</em>.uz</span>
+        <span class="nav-logo-tagline" data-i18n="nav_tagline">Intelligent Systems</span>
+      </div>
     </a>
     <ul class="nav-links">
       <li><a href="services.html" data-i18n="nav_services">Our Services</a></li>
@@ -408,15 +423,15 @@
 
 <footer>
   <div class="footer-bottom">
-    <p>&copy; 2025 <a href="index.html">BeeEye.ca</a> — <span data-i18n="footer_rights">All rights reserved.</span></p>
-    <p><a href="mailto:info@beeeye.ca">info@beeeye.ca</a> · <a href="https://t.me/beeeye_ca">Telegram: @beeeye_ca</a></p>
+    <p>&copy; 2025 <a href="index.html">BeeEye.Uz</a> — <span data-i18n="footer_rights">All rights reserved.</span></p>
+    <p><a href="mailto:info@beeeye.uz">info@beeeye.uz</a> · <a href="https://t.me/beeeye_ca">Telegram: @beeeye_ca</a></p>
   </div>
 </footer>
 
 <script>
 const T = {
   en: {
-    lang_tagline:"🍁 Canadian quality · Uzbekistan market", nav_tagline:"Intelligent Systems",
+    lang_tagline:"Reliable · Modern · Built for Uzbekistan", nav_tagline:"Intelligent Systems",
     nav_services:"Our Services", nav_how:"How We Work", nav_portfolio:"Results", nav_contact_lnk:"Contact", nav_cta:"Book an Audit", nav_home:"Home",
     page_bc:"Results", page_eyebrow:"05 / Client Results",
     page_h1:"What happens when the right digital foundation is in place",
@@ -451,7 +466,7 @@ const T = {
     cta_btn:"Book Free Audit →", footer_rights:"All rights reserved."
   },
   ru: {
-    lang_tagline:"🍁 Канадское качество · Рынок Узбекистана", nav_tagline:"Интеллектуальные системы",
+    lang_tagline:"Надёжно · Современно · Для Узбекистана", nav_tagline:"Интеллектуальные системы",
     nav_services:"Наши услуги", nav_how:"Как мы работаем", nav_portfolio:"Результаты", nav_contact_lnk:"Контакты", nav_cta:"Записаться на аудит", nav_home:"Главная",
     page_bc:"Результаты", page_eyebrow:"05 / Результаты клиентов",
     page_h1:"Что происходит, когда правильная цифровая основа на месте",
@@ -486,7 +501,7 @@ const T = {
     cta_btn:"Заказать бесплатный аудит →", footer_rights:"Все права защищены."
   },
   uz: {
-    lang_tagline:"🍁 Kanada sifati · O'zbekiston bozori", nav_tagline:"Intelligent Systems",
+    lang_tagline:"Ishonchli · Zamonaviy · O'zbekiston uchun", nav_tagline:"Intellektual tizimlar",
     nav_services:"Xizmatlarimiz", nav_how:"Qanday ishlaymiz", nav_portfolio:"Natijalar", nav_contact_lnk:"Aloqa", nav_cta:"Audit buyurtma qilish", nav_home:"Bosh sahifa",
     page_bc:"Natijalar", page_eyebrow:"05 / Mijozlar natijalari",
     page_h1:"To'g'ri raqamli poydevor o'rnatilganda nima sodir bo'ladi",
@@ -521,10 +536,10 @@ const T = {
     cta_btn:"Bepul audit buyurtma qilish →", footer_rights:"Barcha huquqlar himoyalangan."
   }
 };
-let lang='en';
+let lang='uz';
 function setLang(l){lang=l;const t=T[l];['en','ru','uz'].forEach(x=>document.getElementById('btn-'+x).classList.toggle('active',x===l));document.documentElement.lang=l;document.querySelectorAll('[data-i18n]').forEach(el=>{const k=el.getAttribute('data-i18n');if(t[k]!==undefined)el.innerHTML=t[k];});try{localStorage.setItem('bl',l);}catch(e){}}
 function toggleMobile(){document.getElementById('mobile-nav').classList.toggle('open');}
-try{const s=localStorage.getItem('bl');if(s&&T[s])setLang(s);}catch(e){}
+try{const s=localStorage.getItem('bl');setLang(s&&T[s]?s:'uz');}catch(e){}
 </script>
 </body>
 </html>

@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BeeEye.uz — Logo Reference</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Montserrat:wght@500;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --black: #0a0a0a; --white: #ffffff; --off: #f7f7f5;
+      --amber: #f5a623; --muted: #6b7280; --border: #e5e5e5;
+    }
+    body { font-family: 'Inter', sans-serif; background: var(--off); color: var(--black); padding: 3rem 2rem; }
+    h1 { font-size: 28px; font-weight: 800; letter-spacing: -0.03em; margin-bottom: 0.25rem; }
+    .subtitle { font-size: 13px; color: var(--muted); margin-bottom: 3rem; }
+
+    .section { margin-bottom: 3rem; }
+    .section-label { font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 1rem; border-bottom: 1px solid var(--border); padding-bottom: 0.5rem; }
+
+    .swatch-row { display: flex; flex-wrap: wrap; gap: 1.5rem; align-items: center; }
+
+    /* Light bg tile */
+    .tile { border-radius: 10px; border: 1px solid var(--border); padding: 2rem; display: flex; align-items: center; justify-content: center; background: var(--white); }
+    /* Dark bg tile */
+    .tile-dark { background: var(--black); border-color: #222; }
+
+    /* Logo lockup — matches nav */
+    .logo-lockup { display: flex; flex-direction: row; align-items: center; gap: 0.6rem; text-decoration: none; }
+    .logo-name { font-family: 'Inter', sans-serif; font-size: 18px; font-weight: 800; color: var(--black); letter-spacing: -0.03em; line-height: 1; }
+    .logo-name em { color: var(--amber); font-style: normal; }
+    .logo-tagline { font-family: 'Inter', sans-serif; font-size: 9px; color: var(--muted); letter-spacing: 0.12em; text-transform: uppercase; margin-top: 2px; }
+    .logo-name-white { color: var(--white); }
+    .logo-tagline-white { color: #666; }
+
+    /* Code block */
+    pre { background: #1a1a1a; color: #e5e5e5; padding: 1.5rem; border-radius: 8px; font-size: 12px; line-height: 1.7; overflow-x: auto; white-space: pre; }
+    .comment { color: #555; }
+    .tag { color: #f5a623; }
+    .attr { color: #7dd3fc; }
+    .val { color: #86efac; }
+
+    .size-label { font-size: 11px; color: var(--muted); text-align: center; margin-top: 0.5rem; }
+    .size-col { display: flex; flex-direction: column; align-items: center; gap: 0.5rem; }
+  </style>
+</head>
+<body>
+
+<h1>BeeEye.uz — Logo Reference</h1>
+<p class="subtitle">Master logo file. Use this as the source of truth for all projects.</p>
+
+<!-- ─── Icon only ─────────────────────────────────────────────────────────── -->
+<div class="section">
+  <div class="section-label">Icon only — sizes</div>
+  <div class="swatch-row">
+
+    <div class="size-col">
+      <div class="tile">
+        <svg width="16" height="16" viewBox="-5 -5 110 110" xmlns="http://www.w3.org/2000/svg">
+          <defs><mask id="hm-16"><rect x="-5" y="-5" width="110" height="110" fill="black"/>
+            <g transform="translate(50,50) scale(0.60) translate(-50,-50)">
+              <polygon points="50,16 79.44,33 79.44,67 50,84 20.56,67 20.56,33" fill="white" stroke="white" stroke-width="80" stroke-linejoin="round"/>
+              <polygon points="50,16 79.44,33 79.44,67 50,84 20.56,67 20.56,33" fill="black" stroke="black" stroke-width="45" stroke-linejoin="round"/>
+            </g></mask></defs>
+          <rect x="-5" y="-5" width="110" height="110" fill="#0a0a0a" mask="url(#hm-16)"/>
+          <circle cx="50" cy="50" r="11" fill="#f5a623"/>
+        </svg>
+      </div>
+      <div class="size-label">16px</div>
+    </div>
+
+    <div class="size-col">
+      <div class="tile">
+        <svg width="28" height="28" viewBox="-5 -5 110 110" xmlns="http://www.w3.org/2000/svg">
+          <defs><mask id="hm-28"><rect x="-5" y="-5" width="110" height="110" fill="black"/>
+            <g transform="translate(50,50) scale(0.60) translate(-50,-50)">
+              <polygon points="50,16 79.44,33 79.44,67 50,84 20.56,67 20.56,33" fill="white" stroke="white" stroke-width="80" stroke-linejoin="round"/>
+              <polygon points="50,16 79.44,33 79.44,67 50,84 20.56,67 20.56,33" fill="black" stroke="black" stroke-width="45" stroke-linejoin="round"/>
+            </g></mask></defs>
+          <rect x="-5" y="-5" width="110" height="110" fill="#0a0a0a" mask="url(#hm-28)"/>
+          <circle cx="50" cy="50" r="11" fill="#f5a623"/>
+        </svg>
+      </div>
+      <div class="size-label">28px (nav)</div>
+    </div>
+
+    <div class="size-col">
+      <div class="tile">
+        <svg width="48" height="48" viewBox="-5 -5 110 110" xmlns="http://www.w3.org/2000/svg">
+          <defs><mask id="hm-48"><rect x="-5" y="-5" width="110" height="110" fill="black"/>
+            <g transform="translate(50,50) scale(0.60) translate(-50,-50)">
+              <polygon points="50,16 79.44,33 79.44,67 50,84 20.56,67 20.56,33" fill="white" stroke="white" stroke-width="80" stroke-linejoin="round"/>
+              <polygon points="50,16 79.44,33 79.44,67 50,84 20.56,67 20.56,33" fill="black" stroke="black" stroke-width="45" stroke-linejoin="round"/>
+            </g></mask></defs>
+          <rect x="-5" y="-5" width="110" height="110" fill="#0a0a0a" mask="url(#hm-48)"/>
+          <circle cx="50" cy="50" r="11" fill="#f5a623"/>
+        </svg>
+      </div>
+      <div class="size-label">48px</div>
+    </div>
+
+    <div class="size-col">
+      <div class="tile">
+        <svg width="80" height="80" viewBox="-5 -5 110 110" xmlns="http://www.w3.org/2000/svg">
+          <defs><mask id="hm-80"><rect x="-5" y="-5" width="110" height="110" fill="black"/>
+            <g transform="translate(50,50) scale(0.60) translate(-50,-50)">
+              <polygon points="50,16 79.44,33 79.44,67 50,84 20.56,67 20.56,33" fill="white" stroke="white" stroke-width="80" stroke-linejoin="round"/>
+              <polygon points="50,16 79.44,33 79.44,67 50,84 20.56,67 20.56,33" fill="black" stroke="black" stroke-width="45" stroke-linejoin="round"/>
+            </g></mask></defs>
+          <rect x="-5" y="-5" width="110" height="110" fill="#0a0a0a" mask="url(#hm-80)"/>
+          <circle cx="50" cy="50" r="11" fill="#f5a623"/>
+        </svg>
+      </div>
+      <div class="size-label">80px</div>
+    </div>
+
+    <div class="size-col">
+      <div class="tile tile-dark">
+        <svg width="48" height="48" viewBox="-5 -5 110 110" xmlns="http://www.w3.org/2000/svg">
+          <defs><mask id="hm-48w"><rect x="-5" y="-5" width="110" height="110" fill="black"/>
+            <g transform="translate(50,50) scale(0.60) translate(-50,-50)">
+              <polygon points="50,16 79.44,33 79.44,67 50,84 20.56,67 20.56,33" fill="white" stroke="white" stroke-width="80" stroke-linejoin="round"/>
+              <polygon points="50,16 79.44,33 79.44,67 50,84 20.56,67 20.56,33" fill="black" stroke="black" stroke-width="45" stroke-linejoin="round"/>
+            </g></mask></defs>
+          <rect x="-5" y="-5" width="110" height="110" fill="#ffffff" mask="url(#hm-48w)"/>
+          <circle cx="50" cy="50" r="11" fill="#f5a623"/>
+        </svg>
+      </div>
+      <div class="size-label">48px — white on dark</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ─── Full logo lockup ──────────────────────────────────────────────────── -->
+<div class="section">
+  <div class="section-label">Full lockup — light background</div>
+  <div class="swatch-row">
+    <div class="tile" style="padding: 2rem 2.5rem;">
+      <div class="logo-lockup">
+        <svg width="28" height="28" viewBox="-5 -5 110 110" xmlns="http://www.w3.org/2000/svg">
+          <defs><mask id="hm-lk1"><rect x="-5" y="-5" width="110" height="110" fill="black"/>
+            <g transform="translate(50,50) scale(0.60) translate(-50,-50)">
+              <polygon points="50,16 79.44,33 79.44,67 50,84 20.56,67 20.56,33" fill="white" stroke="white" stroke-width="80" stroke-linejoin="round"/>
+              <polygon points="50,16 79.44,33 79.44,67 50,84 20.56,67 20.56,33" fill="black" stroke="black" stroke-width="45" stroke-linejoin="round"/>
+            </g></mask></defs>
+          <rect x="-5" y="-5" width="110" height="110" fill="#0a0a0a" mask="url(#hm-lk1)"/>
+          <circle cx="50" cy="50" r="11" fill="#f5a623"/>
+        </svg>
+        <div>
+          <div class="logo-name">Bee<em>Eye</em>.uz</div>
+          <div class="logo-tagline">Intellektual tizimlar</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-label">Full lockup — dark background</div>
+  <div class="swatch-row">
+    <div class="tile tile-dark" style="padding: 2rem 2.5rem;">
+      <div class="logo-lockup">
+        <svg width="28" height="28" viewBox="-5 -5 110 110" xmlns="http://www.w3.org/2000/svg">
+          <defs><mask id="hm-lk2"><rect x="-5" y="-5" width="110" height="110" fill="black"/>
+            <g transform="translate(50,50) scale(0.60) translate(-50,-50)">
+              <polygon points="50,16 79.44,33 79.44,67 50,84 20.56,67 20.56,33" fill="white" stroke="white" stroke-width="80" stroke-linejoin="round"/>
+              <polygon points="50,16 79.44,33 79.44,67 50,84 20.56,67 20.56,33" fill="black" stroke="black" stroke-width="45" stroke-linejoin="round"/>
+            </g></mask></defs>
+          <rect x="-5" y="-5" width="110" height="110" fill="#ffffff" mask="url(#hm-lk2)"/>
+          <circle cx="50" cy="50" r="11" fill="#f5a623"/>
+        </svg>
+        <div>
+          <div class="logo-name logo-name-white">Bee<em>Eye</em>.uz</div>
+          <div class="logo-tagline logo-tagline-white">Intellektual tizimlar</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ─── Brand colours ─────────────────────────────────────────────────────── -->
+<div class="section">
+  <div class="section-label">Brand colours</div>
+  <div class="swatch-row">
+    <div style="display:flex;flex-direction:column;gap:0.4rem;align-items:center;">
+      <div style="width:64px;height:64px;border-radius:8px;background:#0a0a0a;border:1px solid #333;"></div>
+      <div class="size-label">#0a0a0a<br>Black</div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:0.4rem;align-items:center;">
+      <div style="width:64px;height:64px;border-radius:8px;background:#f5a623;border:1px solid #e5e5e5;"></div>
+      <div class="size-label">#f5a623<br>Amber</div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:0.4rem;align-items:center;">
+      <div style="width:64px;height:64px;border-radius:8px;background:#e0941a;border:1px solid #e5e5e5;"></div>
+      <div class="size-label">#e0941a<br>Amber Dark</div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:0.4rem;align-items:center;">
+      <div style="width:64px;height:64px;border-radius:8px;background:#ffffff;border:1px solid #e5e5e5;"></div>
+      <div class="size-label">#ffffff<br>White</div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:0.4rem;align-items:center;">
+      <div style="width:64px;height:64px;border-radius:8px;background:#f7f7f5;border:1px solid #e5e5e5;"></div>
+      <div class="size-label">#f7f7f5<br>Off-white</div>
+    </div>
+  </div>
+</div>
+
+<!-- ─── SVG source code ───────────────────────────────────────────────────── -->
+<div class="section">
+  <div class="section-label">SVG source — icon only (copy-paste ready)</div>
+  <pre><span class="comment">&lt;!-- BeeEye.uz icon — black on light background --&gt;</span>
+<span class="tag">&lt;svg</span> <span class="attr">width</span>=<span class="val">"28"</span> <span class="attr">height</span>=<span class="val">"28"</span> <span class="attr">viewBox</span>=<span class="val">"-5 -5 110 110"</span> <span class="attr">xmlns</span>=<span class="val">"http://www.w3.org/2000/svg"</span> <span class="attr">aria-hidden</span>=<span class="val">"true"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;defs&gt;</span>
+    <span class="tag">&lt;mask</span> <span class="attr">id</span>=<span class="val">"hm"</span><span class="tag">&gt;</span>
+      <span class="tag">&lt;rect</span> <span class="attr">x</span>=<span class="val">"-5"</span> <span class="attr">y</span>=<span class="val">"-5"</span> <span class="attr">width</span>=<span class="val">"110"</span> <span class="attr">height</span>=<span class="val">"110"</span> <span class="attr">fill</span>=<span class="val">"black"</span><span class="tag">/&gt;</span>
+      <span class="tag">&lt;g</span> <span class="attr">transform</span>=<span class="val">"translate(50,50) scale(0.60) translate(-50,-50)"</span><span class="tag">&gt;</span>
+        <span class="comment">&lt;!-- outer shape: rounded hexagon ring --&gt;</span>
+        <span class="tag">&lt;polygon</span> <span class="attr">points</span>=<span class="val">"50,16 79.44,33 79.44,67 50,84 20.56,67 20.56,33"</span>
+                 <span class="attr">fill</span>=<span class="val">"white"</span> <span class="attr">stroke</span>=<span class="val">"white"</span> <span class="attr">stroke-width</span>=<span class="val">"80"</span> <span class="attr">stroke-linejoin</span>=<span class="val">"round"</span><span class="tag">/&gt;</span>
+        <span class="comment">&lt;!-- inner cutout: creates the hollow ring --&gt;</span>
+        <span class="tag">&lt;polygon</span> <span class="attr">points</span>=<span class="val">"50,16 79.44,33 79.44,67 50,84 20.56,67 20.56,33"</span>
+                 <span class="attr">fill</span>=<span class="val">"black"</span> <span class="attr">stroke</span>=<span class="val">"black"</span> <span class="attr">stroke-width</span>=<span class="val">"45"</span> <span class="attr">stroke-linejoin</span>=<span class="val">"round"</span><span class="tag">/&gt;</span>
+      <span class="tag">&lt;/g&gt;</span>
+    <span class="tag">&lt;/mask&gt;</span>
+  <span class="tag">&lt;/defs&gt;</span>
+  <span class="comment">&lt;!-- hexagon ring fill colour --&gt;</span>
+  <span class="tag">&lt;rect</span> <span class="attr">x</span>=<span class="val">"-5"</span> <span class="attr">y</span>=<span class="val">"-5"</span> <span class="attr">width</span>=<span class="val">"110"</span> <span class="attr">height</span>=<span class="val">"110"</span> <span class="attr">fill</span>=<span class="val">"#0a0a0a"</span> <span class="attr">mask</span>=<span class="val">"url(#hm)"</span><span class="tag">/&gt;</span>
+  <span class="comment">&lt;!-- centre dot --&gt;</span>
+  <span class="tag">&lt;circle</span> <span class="attr">cx</span>=<span class="val">"50"</span> <span class="attr">cy</span>=<span class="val">"50"</span> <span class="attr">r</span>=<span class="val">"11"</span> <span class="attr">fill</span>=<span class="val">"#f5a623"</span><span class="tag">/&gt;</span>
+<span class="tag">&lt;/svg&gt;</span>
+
+<span class="comment">&lt;!-- White variant (for dark backgrounds): change fill="#0a0a0a" → fill="#ffffff" --&gt;</span></pre>
+</div>
+
+<div class="section">
+  <div class="section-label">Full lockup — HTML (copy-paste ready)</div>
+  <pre><span class="tag">&lt;div</span> <span class="attr">style</span>=<span class="val">"display:flex;flex-direction:row;align-items:center;gap:0.6rem;"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;svg</span> <span class="attr">width</span>=<span class="val">"28"</span> <span class="attr">height</span>=<span class="val">"28"</span> <span class="attr">viewBox</span>=<span class="val">"-5 -5 110 110"</span> <span class="attr">xmlns</span>=<span class="val">"http://www.w3.org/2000/svg"</span> <span class="attr">aria-hidden</span>=<span class="val">"true"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;defs&gt;&lt;mask</span> <span class="attr">id</span>=<span class="val">"hm"</span><span class="tag">&gt;</span>
+      <span class="tag">&lt;rect</span> <span class="attr">x</span>=<span class="val">"-5"</span> <span class="attr">y</span>=<span class="val">"-5"</span> <span class="attr">width</span>=<span class="val">"110"</span> <span class="attr">height</span>=<span class="val">"110"</span> <span class="attr">fill</span>=<span class="val">"black"</span><span class="tag">/&gt;</span>
+      <span class="tag">&lt;g</span> <span class="attr">transform</span>=<span class="val">"translate(50,50) scale(0.60) translate(-50,-50)"</span><span class="tag">&gt;</span>
+        <span class="tag">&lt;polygon</span> <span class="attr">points</span>=<span class="val">"50,16 79.44,33 79.44,67 50,84 20.56,67 20.56,33"</span> <span class="attr">fill</span>=<span class="val">"white"</span> <span class="attr">stroke</span>=<span class="val">"white"</span> <span class="attr">stroke-width</span>=<span class="val">"80"</span> <span class="attr">stroke-linejoin</span>=<span class="val">"round"</span><span class="tag">/&gt;</span>
+        <span class="tag">&lt;polygon</span> <span class="attr">points</span>=<span class="val">"50,16 79.44,33 79.44,67 50,84 20.56,67 20.56,33"</span> <span class="attr">fill</span>=<span class="val">"black"</span> <span class="attr">stroke</span>=<span class="val">"black"</span> <span class="attr">stroke-width</span>=<span class="val">"45"</span> <span class="attr">stroke-linejoin</span>=<span class="val">"round"</span><span class="tag">/&gt;</span>
+      <span class="tag">&lt;/g&gt;&lt;/mask&gt;&lt;/defs&gt;</span>
+      <span class="tag">&lt;rect</span> <span class="attr">x</span>=<span class="val">"-5"</span> <span class="attr">y</span>=<span class="val">"-5"</span> <span class="attr">width</span>=<span class="val">"110"</span> <span class="attr">height</span>=<span class="val">"110"</span> <span class="attr">fill</span>=<span class="val">"#0a0a0a"</span> <span class="attr">mask</span>=<span class="val">"url(#hm)"</span><span class="tag">/&gt;</span>
+      <span class="tag">&lt;circle</span> <span class="attr">cx</span>=<span class="val">"50"</span> <span class="attr">cy</span>=<span class="val">"50"</span> <span class="attr">r</span>=<span class="val">"11"</span> <span class="attr">fill</span>=<span class="val">"#f5a623"</span><span class="tag">/&gt;</span>
+  <span class="tag">&lt;/svg&gt;</span>
+  <span class="tag">&lt;div&gt;</span>
+    <span class="tag">&lt;span</span> <span class="attr">style</span>=<span class="val">"font-size:18px;font-weight:800;letter-spacing:-0.03em;line-height:1;"</span><span class="tag">&gt;</span>
+      Bee<span class="tag">&lt;em</span> <span class="attr">style</span>=<span class="val">"color:#f5a623;font-style:normal;"</span><span class="tag">&gt;</span>Eye<span class="tag">&lt;/em&gt;</span>.uz
+    <span class="tag">&lt;/span&gt;</span>
+    <span class="tag">&lt;span</span> <span class="attr">style</span>=<span class="val">"display:block;font-size:9px;color:#6b7280;letter-spacing:0.12em;text-transform:uppercase;margin-top:2px;"</span><span class="tag">&gt;</span>
+      Intellektual tizimlar
+    <span class="tag">&lt;/span&gt;</span>
+  <span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;/div&gt;</span></pre>
+</div>
+
+</body>
+</html>

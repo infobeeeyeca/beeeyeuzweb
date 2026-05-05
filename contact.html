@@ -1,10 +1,10 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact — BeeEye.ca</title>
-  <meta name="description" content="Get a free audit from BeeEye.ca. Web design and digital solutions for Uzbekistan businesses. Available in Uzbek, Russian, and English.">
+  <title>Contact — BeeEye.Uz</title>
+  <meta name="description" content="Get a free audit from BeeEye.Uz. Web design and digital solutions for Uzbekistan businesses. Available in Uzbek, Russian, and English.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -181,7 +181,7 @@
 <body>
 
 <div class="lang-bar">
-  <span class="lang-bar-left"><span data-i18n="lang_tagline">🍁 Canadian quality · Uzbekistan market</span></span>
+  <span class="lang-bar-left"><span data-i18n="lang_tagline">Ishonchli · Zamonaviy · O'zbekiston uchun</span></span>
   <div class="lang-switcher">
     <button class="lang-btn active" onclick="setLang('en')" id="btn-en">EN</button>
     <button class="lang-btn" onclick="setLang('ru')" id="btn-ru">RU</button>
@@ -191,9 +191,24 @@
 
 <nav>
   <div class="nav-inner">
-    <a href="index.html" class="nav-logo">
-      <span class="nav-logo-name">Bee<em>Eye</em>.ca</span>
-      <span class="nav-logo-tagline" data-i18n="nav_tagline">Intelligent Systems</span>
+    <a href="index.html" class="nav-logo" style="flex-direction:row;align-items:center;gap:0.6rem;">
+      <svg width="28" height="28" viewBox="-5 -5 110 110" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs>
+          <mask id="hm">
+            <rect x="-5" y="-5" width="110" height="110" fill="black"/>
+            <g transform="translate(50,50) scale(0.60) translate(-50,-50)">
+              <polygon points="50,16 79.44,33 79.44,67 50,84 20.56,67 20.56,33" fill="white" stroke="white" stroke-width="80" stroke-linejoin="round"/>
+              <polygon points="50,16 79.44,33 79.44,67 50,84 20.56,67 20.56,33" fill="black" stroke="black" stroke-width="45" stroke-linejoin="round"/>
+            </g>
+          </mask>
+        </defs>
+        <rect x="-5" y="-5" width="110" height="110" fill="#0a0a0a" mask="url(#hm)"/>
+        <circle cx="50" cy="50" r="11" fill="#f5a623"/>
+      </svg>
+      <div>
+        <span class="nav-logo-name">Bee<em>Eye</em>.uz</span>
+        <span class="nav-logo-tagline" data-i18n="nav_tagline">Intelligent Systems</span>
+      </div>
     </a>
     <ul class="nav-links">
       <li><a href="services.html" data-i18n="nav_services">Our Services</a></li>
@@ -322,13 +337,13 @@
         </div>
 
         <div class="contact-cards">
-          <a href="mailto:info@beeeye.ca" class="contact-card">
+          <a href="mailto:info@beeeye.uz" class="contact-card">
             <div class="cc-icon">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="#6b7280" stroke-width="2"/><path d="M22 6l-10 7L2 6" stroke="#6b7280" stroke-width="2"/></svg>
             </div>
             <div>
               <div class="cc-label" data-i18n="cc_email">Email</div>
-              <div class="cc-value">info@beeeye.ca</div>
+              <div class="cc-value">info@beeeye.uz</div>
             </div>
           </a>
           <a href="https://t.me/beeeye_ca" target="_blank" rel="noopener" class="contact-card">
@@ -345,7 +360,7 @@
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 01.22 2.18 2 2 0 012.22 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" stroke="#6b7280" stroke-width="2"/></svg>
             </div>
             <div>
-              <div class="cc-label" data-i18n="cc_phone">Phone (Canada)</div>
+              <div class="cc-label" data-i18n="cc_phone">Phone</div>
               <div class="cc-value">+1 (613) 707-8888</div>
             </div>
           </a>
@@ -355,7 +370,7 @@
             </div>
             <div>
               <div class="cc-label" data-i18n="cc_offices">Offices</div>
-              <div class="cc-value" data-i18n="cc_offices_val">Ottawa, Canada · Tashkent, Uzbekistan</div>
+              <div class="cc-value" data-i18n="cc_offices_val">Tashkent, Uzbekistan</div>
             </div>
           </div>
         </div>
@@ -406,15 +421,15 @@
 
 <footer>
   <div class="footer-bottom">
-    <p>&copy; 2025 <a href="index.html">BeeEye.ca</a> — <span data-i18n="footer_rights">All rights reserved.</span></p>
-    <p><a href="mailto:info@beeeye.ca">info@beeeye.ca</a> &nbsp;·&nbsp; <a href="https://t.me/beeeye_ca">Telegram</a></p>
+    <p>&copy; 2025 <a href="index.html">BeeEye.Uz</a> — <span data-i18n="footer_rights">All rights reserved.</span></p>
+    <p><a href="mailto:info@beeeye.uz">info@beeeye.uz</a> &nbsp;·&nbsp; <a href="https://t.me/beeeye_ca">Telegram</a></p>
   </div>
 </footer>
 
 <script>
 const T = {
   en: {
-    lang_tagline:"🍁 Canadian quality · Uzbekistan market",
+    lang_tagline:"Reliable · Modern · Built for Uzbekistan",
     nav_tagline:"Intelligent Systems", nav_services:"Our Services", nav_how:"How We Work",
     nav_portfolio:"Results", nav_contact_lnk:"Contact", nav_cta:"Book an Audit", nav_home:"Home",
     page_bc:"Contact", page_eyebrow:"06 / Get in Touch",
@@ -437,8 +452,8 @@ const T = {
     ok_title:"Message received.", ok_sub:"Thank you for reaching out. We'll contact you within 24 hours to discuss your project in detail.",
     sb_eyebrow:"Other channels", sb_title:"Reach us directly",
     sb_sub:"We're available across multiple channels. Use whichever is most convenient for you.",
-    cc_email:"Email", cc_phone:"Phone (Canada)", cc_offices:"Offices",
-    cc_offices_val:"Ottawa, Canada · Tashkent, Uzbekistan",
+    cc_email:"Email", cc_phone:"Phone", cc_offices:"Offices",
+    cc_offices_val:"Tashkent, Uzbekistan",
     hours_title:"Business Hours",
     h_monFri:"Monday – Friday", h_sat:"Saturday", h_sun:"Sunday",
     h_closed:"Closed", h_email:"Email response", h_24h:"Within 24 hours",
@@ -449,7 +464,7 @@ const T = {
     footer_rights:"All rights reserved."
   },
   ru: {
-    lang_tagline:"🍁 Канадское качество · Рынок Узбекистана",
+    lang_tagline:"Надёжно · Современно · Для Узбекистана",
     nav_tagline:"Интеллектуальные системы", nav_services:"Наши услуги", nav_how:"Как мы работаем",
     nav_portfolio:"Результаты", nav_contact_lnk:"Контакты", nav_cta:"Записаться на аудит", nav_home:"Главная",
     page_bc:"Контакты", page_eyebrow:"06 / Связаться",
@@ -472,8 +487,8 @@ const T = {
     ok_title:"Сообщение получено.", ok_sub:"Спасибо, что написали. Мы свяжемся с вами в течение 24 часов для детального обсуждения проекта.",
     sb_eyebrow:"Другие каналы", sb_title:"Свяжитесь напрямую",
     sb_sub:"Мы доступны по нескольким каналам. Используйте тот, который вам удобнее.",
-    cc_email:"Email", cc_phone:"Телефон (Канада)", cc_offices:"Офисы",
-    cc_offices_val:"Оттава, Канада · Ташкент, Узбекистан",
+    cc_email:"Email", cc_phone:"Телефон", cc_offices:"Офисы",
+    cc_offices_val:"Ташкент, Узбекистан",
     hours_title:"Рабочие часы",
     h_monFri:"Понедельник – Пятница", h_sat:"Суббота", h_sun:"Воскресенье",
     h_closed:"Выходной", h_email:"Ответ по email", h_24h:"В течение 24 часов",
@@ -484,8 +499,8 @@ const T = {
     footer_rights:"Все права защищены."
   },
   uz: {
-    lang_tagline:"🍁 Kanada sifati · O'zbekiston bozori",
-    nav_tagline:"Intelligent Systems", nav_services:"Xizmatlarimiz", nav_how:"Qanday ishlaymiz",
+    lang_tagline:"Ishonchli · Zamonaviy · O'zbekiston uchun",
+    nav_tagline:"Intellektual tizimlar", nav_services:"Xizmatlarimiz", nav_how:"Qanday ishlaymiz",
     nav_portfolio:"Natijalar", nav_contact_lnk:"Aloqa", nav_cta:"Audit buyurtma qilish", nav_home:"Bosh sahifa",
     page_bc:"Aloqa", page_eyebrow:"06 / Bog'lanish",
     page_h1:"O'zbekiston bozori uchun birgalikda nimadir yarataylik",
@@ -507,8 +522,8 @@ const T = {
     ok_title:"Xabar qabul qilindi.", ok_sub:"Murojaat qilganingiz uchun rahmat. Loyihangizni batafsil muhokama qilish uchun 24 soat ichida siz bilan bog'lanamiz.",
     sb_eyebrow:"Boshqa kanallar", sb_title:"Bevosita bog'laning",
     sb_sub:"Biz bir nechta kanal orqali mavjudmiz. O'zingizga qulay bo'lganini ishlating.",
-    cc_email:"Email", cc_phone:"Telefon (Kanada)", cc_offices:"Ofislar",
-    cc_offices_val:"Ottava, Kanada · Toshkent, O'zbekiston",
+    cc_email:"Email", cc_phone:"Telefon", cc_offices:"Ofislar",
+    cc_offices_val:"Toshkent, O'zbekiston",
     hours_title:"Ish vaqti",
     h_monFri:"Dushanba – Juma", h_sat:"Shanba", h_sun:"Yakshanba",
     h_closed:"Dam olish kuni", h_email:"Email javobi", h_24h:"24 soat ichida",
@@ -520,7 +535,7 @@ const T = {
   }
 };
 
-let lang = 'en';
+let lang = 'uz';
 function setLang(l) {
   lang = l;
   const t = T[l];
@@ -549,7 +564,7 @@ function handleSubmit(e) {
   s.querySelector('p').textContent = t.ok_sub;
 }
 
-try { const s = localStorage.getItem('bl'); if (s && T[s]) setLang(s); } catch(e) {}
+try { const s = localStorage.getItem('bl'); setLang(s && T[s] ? s : 'uz'); } catch(e) {}
 </script>
 </body>
 </html>
